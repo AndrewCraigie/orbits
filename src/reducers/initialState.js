@@ -13,6 +13,9 @@ export default {
       monthly: 0,
       annual: 0,
       threeYear: 0
-    }
+    },
+    orbitDefs: [
+      {name: "orbit 1"}
+    ]
   }
 };

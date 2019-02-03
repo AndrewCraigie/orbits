@@ -8,11 +8,11 @@ import FuelSavingsForm from '../FuelSavingsForm';
 export class FuelSavingsPage extends React.Component {
   saveFuelSavings = () => {
     this.props.actions.saveFuelSavings(this.props.fuelSavings);
-  }
+  };
 
   calculateFuelSavings = e => {
     this.props.actions.calculateFuelSavings(this.props.fuelSavings, e.target.name, e.target.value);
-  }
+  };
 
   render() {
     return (
