@@ -33,13 +33,15 @@ const OrbitDef = ({ actions,  orbitDef }) => {
     >
       <input type="submit" name="submit" defaultValue="-"/>
       <OrbitDefIdInput name="orbitDefId" value={orbitDef.orbitDefId}/>
-      <OrbitDefTextInput name="n" value={orbitDef.n} onChange={inputChange} hidden={false}/>
       <OrbitDefTextInput name="cX" value={orbitDef.cX} onChange={inputChange} hidden={false}/>
       <OrbitDefTextInput name="cY" value={orbitDef.cY} onChange={inputChange} hidden={false}/>
+      <OrbitDefTextInput name="n" value={orbitDef.n} onChange={inputChange} hidden={false}/>
       <OrbitDefTextInput name="r" value={orbitDef.r} onChange={inputChange} hidden={false}/>
       <OrbitDefTextInput name="phase" value={orbitDef.phase} onChange={inputChange} hidden={false}/>
       <OrbitDefTextInput name="a" value={orbitDef.a} onChange={inputChange} hidden={false}/>
       <OrbitDefTextInput name="b" value={orbitDef.b} onChange={inputChange} hidden={false}/>
+      <OrbitDefTextInput name="fX" value={orbitDef.fX} onChange={inputChange} hidden={false}/>
+      <OrbitDefTextInput name="fY" value={orbitDef.fY} onChange={inputChange} hidden={false}/>
       <OrbitDefTextInput name="endX" value={orbitDef.endX} onChange={inputChange} hidden={false}/>
       <OrbitDefTextInput name="endY" value={orbitDef.endY} onChange={inputChange} hidden={false}/>
     </form>
@@ -48,6 +50,7 @@ const OrbitDef = ({ actions,  orbitDef }) => {
 };
 
 OrbitDef.propTypes = {
+  actions: PropTypes.object.isRequired,
   orbitDef: PropTypes.object.isRequired
 };
 

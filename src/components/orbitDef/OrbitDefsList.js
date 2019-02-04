@@ -11,7 +11,7 @@ const OrbitDefsList = ({ actions, orbitDefs }) => {
   });
 
   return (
-    <div>
+    <div className="orbits-defs-list">
       {orbitDefsElements}
     </div>
   )

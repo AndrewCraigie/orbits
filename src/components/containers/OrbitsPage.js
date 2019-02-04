@@ -13,8 +13,7 @@ export class OrbitsPage extends React.Component{
 
   render(){
     return (
-      <div className={'orbit-page'}>
-        <p>Placeholder</p>
+      <div className={'orbits-page'}>
         <OrbitDefsList actions={this.props.actions} orbitDefs={this.props.orbitsSettings.orbitDefs}/>
         <OrbitDefAddControl actions={this.props.actions} settings={this.props.orbitsSettings} />
       </div>

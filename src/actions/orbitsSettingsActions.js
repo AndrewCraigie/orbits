@@ -1,5 +1,5 @@
 import * as types from '../constants/actionTypes';
-import { generateId } from '../utils/generateId';
+//
 
 
 // example of a thunk using the redux-thunk middleware
@@ -25,10 +25,10 @@ import { generateId } from '../utils/generateId';
 //   };
 // }
 
-export function addNewOrbit(defaultId1, defaultId2){
+export function addNewOrbit(defaultId1, defaultId2, generateIdFunc){
   return {
     type: types.ADD_NEW_ORBITDEF,
-    id: generateId(defaultId1, defaultId2)
+    id: generateIdFunc(defaultId1, defaultId2)
   };
 }
 

@@ -16,4 +16,12 @@ const OrbitDefIdInput = ({name, value}) => {
 
 };
 
+OrbitDefIdInput.propTypes = {
+  name: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ])
+};
+
 export default OrbitDefIdInput;

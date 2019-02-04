@@ -8,13 +8,14 @@ body {
   font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.4em;
   color: #4d4d4d;
-  min-width: 230px;
-  max-width: 550px;
-  margin: 0 auto;
+  margin: 0;
+  padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
   font-smoothing: antialiased;
   font-weight: 300;
+  background-color: #e7ecea;
+
 }
 
 td {
@@ -25,7 +26,64 @@ h2 {
 	color: $vin-blue;
 }
 
+#app{
+  margin: 0;
+  background-color: #e7ecea;
+
+}
+
+header{
+  width: 100%;
+  height: 30px;
+  border-bottom: 1px solid darkgray;
+  padding: 5px;
+}
+
+.orbits-page{
+  margin-top: 10px;
+  padding: 10px;
+  background-color: white;
+}
+
+.orbits-defs-list{
+  width: 250px;
+  margin-bottom: 5px;
+}
+
+.orbit-def-form{
+  width: 250px;
+  padding: 5px 0 10px 5px;
+  border: 1px solid darkgray;
+  background-color: lightblue;
+}
+
+.orbit-def-form input[type=submit]{
+  display:block;
+  margin-bottom: 7px;
+}
+
+.orbit-def-input-label {
+  display:block;
+  height: 23px;
+}
+
+.orbit-def-label-title {
+  display: inline-block;
+  width: 44px;
+}
+
+.orbit-add-controls {
+  position: relative;
+  width: 255px;
+  height: 25px;
+
+}
+
+.orbit-add-button {
+  float: right;
+}
+
 .savings { color: $vin-green; }
 .loss { color: $vin-red; }
 input.small { width: 46px; }
-td.fuel-savings-label { width: 175px; }
+

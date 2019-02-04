@@ -14,10 +14,10 @@ class App extends React.Component {
     const activeStyle = { color: 'blue' };
     return (
       <div>
-        <div>
+        <header>
           <NavLink exact to="/" activeStyle={activeStyle}>Orbits</NavLink>
           {' | '}
-        </div>
+        </header>
         <Switch>
           <Route exact path="/" component={OrbitsPage} />
           <Route component={NotFoundPage} />

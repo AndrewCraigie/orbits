@@ -8,6 +8,9 @@ export default function orbitsSettingsReducer(state = initialState.orbitsSetting
   let newState;
   let newOrbitDef;
 
+  // TODO whenever making a copy of orbitDefs
+  // need to calculate the current positions
+
   switch(action.type){
 
     case ADD_NEW_ORBITDEF:
