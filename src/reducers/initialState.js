@@ -18,7 +18,7 @@ export default {
     },
     orbitDefs: [
       {
-        orbitDefId: "1",
+        orbitDefId: "oneid",
         n: "1",
         cX: "0",
         cY: "0",
@@ -30,7 +30,7 @@ export default {
         endY: "0"
       },
       {
-        orbitDefId: "2",
+        orbitDefId: "twoid",
         n: "2",
         cX: "0",
         cY: "0",

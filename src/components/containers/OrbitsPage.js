@@ -16,7 +16,7 @@ export class OrbitsPage extends React.Component{
       <div className={'orbit-page'}>
         <p>Placeholder</p>
         <OrbitDefsList actions={this.props.actions} orbitDefs={this.props.orbitsSettings.orbitDefs}/>
-        <OrbitDefAddControl actions={this.props.actions} settings={this.props.orbitsSettings}/>
+        <OrbitDefAddControl actions={this.props.actions} settings={this.props.orbitsSettings} />
       </div>
       )
   }

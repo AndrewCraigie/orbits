@@ -1,10 +1,12 @@
-//import ShortId from 'shortid';
+import ShortId from 'shortid';
 
+export function generateId(defaultId1, defaultId2){
 
-export function generateId(defaultIds){
+  let id = ShortId.generate();
+  while(id === defaultId1 || id === defaultId2){
+    id = ShortId.generate();
+  }
 
-  console.log('defaultIds', defaultIds);
-
-  return "skksk"
+  return id;
 
 }

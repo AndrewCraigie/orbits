@@ -20,7 +20,7 @@ export default function orbitsSettingsReducer(state = initialState.orbitsSetting
       };
 
       newOrbitDef = objectAssign({}, state.defaultOrbit);
-      newOrbitDef.orbitDefId = "56";
+      newOrbitDef.orbitDefId = action.id;
 
       // Need to get unique id
       newState.orbitDefs.push(newOrbitDef);
