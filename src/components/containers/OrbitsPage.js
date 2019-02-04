@@ -1,17 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as actions from "../../actions/orbitsStateActions";
+import OrbitDefsList from '../orbitDef/OrbitDefsList';
+import OrbitDefAddControl from '../orbitDef/OrbitDefAddControl';
+import * as actions from "../../actions/orbitsSettingsActions";
 
 
-export class OrbitsPage extends Component{
+export class OrbitsPage extends React.Component{
+
+
 
   render(){
     return (
-        <h1>Orbits Page</h1>
+      <div className={'orbit-page'}>
+        <p>Placeholder</p>
+        <OrbitDefsList actions={this.props.actions} orbitDefs={this.props.orbitsSettings.orbitDefs}/>
+        <OrbitDefAddControl actions={this.props.actions} settings={this.props.orbitsSettings}/>
+      </div>
       )
-
   }
 
 
@@ -19,12 +26,12 @@ export class OrbitsPage extends Component{
 
 OrbitsPage.propTypes = {
   actions: PropTypes.object.isRequired,
-  fuelSavings: PropTypes.object.isRequired
+  orbitsSettings: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
   return {
-    fuelSavings: state.fuelSavings
+    orbitsSettings: state.orbitsSettings
   };
 }
 

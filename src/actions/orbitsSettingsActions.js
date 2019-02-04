@@ -1,4 +1,5 @@
 import * as types from '../constants/actionTypes';
+import generateId from '../utils/generateId';
 
 
 // example of a thunk using the redux-thunk middleware
@@ -24,9 +25,25 @@ import * as types from '../constants/actionTypes';
 //   };
 // }
 
-export function addNewOrbit(orbitName){
+export function addNewOrbit({ defaultId1, defaultId2 }){
   return {
-    type: types.ADD_NEW_ORBIT,
-    name: orbitName
+    type: types.ADD_NEW_ORBITDEF,
+    id: generateId([defaultId1, defaultId2])
+  };
+}
+
+export function orbitDefInputChange(orbitDef, orbitDefPropertyName, orbitDefPropertyValue){
+  return {
+    type: types.ORBIT_DEF_INPUT_CHANGE,
+    orbitDef,
+    orbitDefPropertyName,
+    orbitDefPropertyValue
+  };
+}
+
+export function deleteOrbitDef(orbitDef){
+  return {
+    type: types.DELETE_ORBITDEF,
+    orbitDef
   };
 }
