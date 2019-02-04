@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import OrbitDef from './OrbitDef';
+import {bindActionCreators} from "redux";
+
 
 const OrbitDefsList = ({ actions, orbitDefs }) => {
 
@@ -21,7 +23,7 @@ const OrbitDefsList = ({ actions, orbitDefs }) => {
 OrbitDefsList.propTypes = {
   actions: PropTypes.object.isRequired,
   orbitDefs: PropTypes.array.isRequired
-
 };
+
 
 export default  OrbitDefsList;

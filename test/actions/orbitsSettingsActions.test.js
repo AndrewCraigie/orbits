@@ -1,5 +1,5 @@
 import * as ActionTypes from '../../src/constants/actionTypes';
-import * as ActionCreators from '../../src/actions/orbitsSettingsActions';
+import * as ActionCreators from '../../src/actions/orbitDefsActions';
 
 describe('Actions', () => {
 
@@ -94,7 +94,7 @@ describe('Actions', () => {
   it('should create an action to add a new orbit', () => {
 
     let id = "ZrtV-rx";
-    const actual = ActionCreators.addNewOrbit(appState.defaultId1, appState.defaultId2, generateId);
+    const actual = ActionCreators.addNewOrbit();
     const expected = {
       type: ActionTypes.ADD_NEW_ORBITDEF,
       id: id

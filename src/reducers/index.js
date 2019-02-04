@@ -1,8 +1,11 @@
 import { combineReducers } from 'redux';
-import orbitsSettings from './orbitsSettingsReducer';
+import appSettings from './appSettingsReducer';
+import orbitDefs from './orbitDefsReducer';
 
 const rootReducer = combineReducers({
-  orbitsSettings,
+  // these combine to create 'state'
+  orbitDefs,
+  appSettings,
 });
 
 export default rootReducer;

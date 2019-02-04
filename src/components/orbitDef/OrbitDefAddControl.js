@@ -1,16 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { generateId } from '../../utils/generateId';
 
-const OrbitDefAddControl = ({ actions, settings }) => {
+
+const OrbitDefAddControl = ({ actions, appSettings }) => {
 
   let addOrbit = () => {
     //this.props.actions.saveFuelSavings(this.props.fuelSavings);
-    actions.addNewOrbit(
-      settings.defaultId1,
-      settings.defaultId2,
-      generateId
-    );
+    actions.addNewOrbit(appSettings.defaultOrbit);
   };
 
   return (
@@ -23,7 +19,7 @@ const OrbitDefAddControl = ({ actions, settings }) => {
 
 OrbitDefAddControl.propTypes = {
   actions: PropTypes.object.isRequired,
-  settings: PropTypes.object.isRequired
+  appSettings: PropTypes.object.isRequired
 };
 
 export default OrbitDefAddControl;
