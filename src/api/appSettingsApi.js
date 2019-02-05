@@ -9,6 +9,8 @@ const appSettings = {
   plotScale: 1,
   defaultId1: "oneid",
   defaultId2: "twoid",
+  cX: 0,
+  cY: 0,
   defaultOrbit: {
     orbitDefId: "1",
     n: "1",

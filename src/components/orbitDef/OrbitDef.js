@@ -31,8 +31,8 @@ const OrbitDef = ({inputChange, deleteOrbit, actions,  orbitDef }) => {
       onSubmit={deleteOrbitDef}
     >
       <p className="orbit-def-id">{orbitDef.orbitDefId}</p>
-      <input type="submit" name="submit" defaultValue="-"/>
-      <OrbitDefIdInput name="orbitDefId" value={orbitDef.orbitDefId}/>
+      <input type="submit" name="submit" defaultValue="-" />
+      <OrbitDefIdInput name="orbitDefId" value={orbitDef.orbitDefId} onChange={__inputChange}/>
       <OrbitDefTextInput name="cX" value={orbitDef.cX} onChange={__inputChange} hidden={false}/>
       <OrbitDefTextInput name="cY" value={orbitDef.cY} onChange={__inputChange} hidden={false}/>
       <OrbitDefTextInput name="n" value={orbitDef.n} onChange={__inputChange} hidden={false}/>

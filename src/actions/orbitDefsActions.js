@@ -1,5 +1,6 @@
 import * as types from '../constants/actionTypes';
 import OrbitsApi from '../api/orbitsApi';
+import { calculateOrbits } from '../models/OrbitsCalculator';
 
 
 export function __orbitDefInputChange(orbitDefs){
@@ -27,9 +28,11 @@ export function orbitDefInputChange(
       return Object.assign({}, orbitDef);
     });
 
+    let calculatedOrbDefs = calculateOrbits(appSettings, newOrbitDefs);
+
     // TODO recalculate values
 
-    dispatch(__orbitDefInputChange(newOrbitDefs));
+    dispatch(__orbitDefInputChange(calculatedOrbDefs));
 
   };
 }
