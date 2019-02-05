@@ -10,6 +10,13 @@ import { hot } from "react-hot-loader";
 
 
 class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+  }
+
+
   render() {
     const activeStyle = { color: 'blue' };
     return (
@@ -19,7 +26,7 @@ class App extends React.Component {
           {' | '}
         </header>
         <Switch>
-          <Route exact path="/" component={OrbitsPage} />
+          <Route exact path="/"  component={OrbitsPage} />
           <Route component={NotFoundPage} />
         </Switch>
       </div>

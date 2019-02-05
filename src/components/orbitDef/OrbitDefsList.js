@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import OrbitDef from './OrbitDef';
-import {bindActionCreators} from "redux";
 
 
-const OrbitDefsList = ({ actions, orbitDefs }) => {
+const OrbitDefsList = ({ inputChange, deleteOrbit, actions, appSettings, orbitDefs }) => {
 
   let orbitDefsElements = orbitDefs.map(orbDef => {
     return (
-      <OrbitDef key={orbDef.orbitDefId} actions={actions} orbitDef={orbDef}/>
+      <OrbitDef key={orbDef.orbitDefId} inputChange={inputChange} deleteOrbit={deleteOrbit} actions={actions} orbitDef={orbDef}/>
     )
   });
 
@@ -22,7 +21,10 @@ const OrbitDefsList = ({ actions, orbitDefs }) => {
 
 OrbitDefsList.propTypes = {
   actions: PropTypes.object.isRequired,
-  orbitDefs: PropTypes.array.isRequired
+  appSettings: PropTypes.object.isRequired,
+  orbitDefs: PropTypes.array.isRequired,
+  deleteOrbit: PropTypes.func.isRequired,
+  inputChange: PropTypes.func.isRequired
 };
 
 

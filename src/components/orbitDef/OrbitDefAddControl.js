@@ -2,12 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-const OrbitDefAddControl = ({ actions, appSettings }) => {
+const OrbitDefAddControl = ({ addOrbit }) => {
 
-  let addOrbit = () => {
-    //this.props.actions.saveFuelSavings(this.props.fuelSavings);
-    actions.addNewOrbit(appSettings.defaultOrbit);
-  };
 
   return (
     <div className="orbit-add-controls">
@@ -18,8 +14,7 @@ const OrbitDefAddControl = ({ actions, appSettings }) => {
 };
 
 OrbitDefAddControl.propTypes = {
-  actions: PropTypes.object.isRequired,
-  appSettings: PropTypes.object.isRequired
+  addOrbit: PropTypes.func.isRequired,
 };
 
 export default OrbitDefAddControl;
