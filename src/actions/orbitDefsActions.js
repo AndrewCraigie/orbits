@@ -3,23 +3,23 @@ import OrbitsApi from '../api/orbitsApi';
 import { calculateOrbits } from '../models/OrbitsCalculator';
 
 
-export function __orbitDefInputChange(orbitDefs){
+export function __orbitDefsChange(orbitDefs, appSettings){
   return {
-    type: types.ORBIT_DEF_INPUT_CHANGE,
-    orbitDefs
-  };
+    type: types.ORBIT_DEFS_CHANGE,
+    orbitDefs,
+    appSettings
+  }
 }
 
 export function orbitDefInputChange(
-  appSettings,
-  orbitDefs,
   orbitDefToUpdate,
   propName,
   value){
-  return function(dispatch){
+  return function(dispatch, getState){
 
+    const state = getState();
 
-    let newOrbitDefs = orbitDefs.map(orbitDef => {
+    let newOrbitDefs = state.orbitDefs.map(orbitDef => {
       if (orbitDef.orbitDefId === orbitDefToUpdate.orbitDefId) {
         let objPart = {};
         objPart[propName] = value;
@@ -28,67 +28,49 @@ export function orbitDefInputChange(
       return Object.assign({}, orbitDef);
     });
 
-    let calculatedOrbDefs = calculateOrbits(appSettings, newOrbitDefs);
 
-    // TODO recalculate values
+    let calculatedState = calculateOrbits(state.appSettings, newOrbitDefs);
 
-    dispatch(__orbitDefInputChange(calculatedOrbDefs));
+    dispatch(__orbitDefsChange(calculatedState.oribtDefs, calculatedState.appSettings));
 
   };
 }
 
-// ------------------------------------------------------------------
-export function __deleteOrbitDef(orbitDefs){
-  return {
-    type: types.DELETE_ORBITDEF,
-    orbitDefs
-  };
-}
+export function deleteOrbitDef(orbitDefToDelete){
+  return function(dispatch, getState){
 
-export function deleteOrbitDef(appSettings, orbitDefs, orbitDefToDelete){
-  return function(dispatch){
+    const state = getState();
 
-    // Get all orbitDefs
-    // Remove the one we want to delete
-    // Create orbitDef copies
-    let newOrbitDefs = orbitDefs.filter(orbitDef => {
+    let newOrbitDefs = state.orbitDefs.filter(orbitDef => {
       if (orbitDef.orbitDefId !== orbitDefToDelete.orbitDefId) {
         return Object.assign({}, orbitDef);
       }
     });
 
-    // TODO recalculate values
+    let calculatedState = calculateOrbits(state.appSettings, newOrbitDefs);
 
-    // dispatch them
-    dispatch(__deleteOrbitDef(newOrbitDefs));
+    dispatch(__orbitDefsChange(calculatedState.oribtDefs, calculatedState.appSettings));
 
   }
 }
 
-// ------------------------------------------------------------------
-export function __addOrbitDef(orbitDefs){
-  return {
-    type: types.ADD_NEW_ORBITDEF,
-    orbitDefs
-  };
-}
+export function addOrbitDef(){
+  return function(dispatch, getState){
 
-export function addOrbitDef(appSettings, orbitDefs){
+    const state = getState();
 
-  return function(dispatch){
-    let newOrbitDef = Object.assign({}, appSettings.defaultOrbit);
+    let newOrbitDef = Object.assign({}, state.appSettings.defaultOrbit);
     newOrbitDef.orbitDefId = OrbitsApi.generateId();
 
     let newOrbitDefs = [
-     ...orbitDefs,
+     ...state.orbitDefs,
      newOrbitDef
     ];
 
-    // TODO recalculate values
+    let calculatedState = calculateOrbits(state.appSettings, newOrbitDefs);
 
-    dispatch(__addOrbitDef(newOrbitDefs));
+    dispatch(__orbitDefsChange(calculatedState.oribtDefs, calculatedState.appSettings));
   }
-
 }
 
 // ------------------------------------------------------------------
@@ -100,9 +82,15 @@ export function loadOrbitDefsSuccess(orbitDefs){
 }
 
 export function loadOrbitDefs(){
-  return function (dispatch){
+  return function (dispatch, getState){
     return OrbitsApi.getAllOrbitDefs().then(orbitDefs => {
-      dispatch(loadOrbitDefsSuccess(orbitDefs));
+
+      const state = getState();
+
+      let calculatedState = calculateOrbits(state.appSettings, orbitDefs);
+
+      dispatch(loadOrbitDefsSuccess(calculatedState.oribtDefs, calculatedState.appSettings));
+
     }).catch(error => {
       console.log(error);
       // TODO create an action that sets state errors for app

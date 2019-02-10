@@ -2,6 +2,7 @@
 $vin-blue: #5bb7db;
 $vin-green: #60b044;
 $vin-red: #ff0000;
+$label-width: 49px;
 
 /* Styles */
 body {
@@ -45,6 +46,30 @@ header{
   background-color: white;
 }
 
+.orbit-head {
+  width: 250px;
+  padding: 5px 0 10px 5px;
+  border: 1px solid darkgray;
+  background-color: lightgreen;
+}
+
+.orbit-head-t-title{
+  display: inline-block;
+  width: $label-width;
+}
+
+.orbit-head-interval-title{
+  display: inline-block;
+  width: $label-width;
+}
+
+.orbit-head-c-title{
+  display: inline-block;
+  width: $label-width;
+}
+
+
+
 .orbits-defs-list{
   width: 250px;
   margin-bottom: 5px;
@@ -69,7 +94,7 @@ header{
 
 .orbit-def-label-title {
   display: inline-block;
-  width: 44px;
+  width: $label-width;
 }
 
 .orbit-add-controls {
@@ -91,7 +116,21 @@ header{
   float: right;
 }
 
+.orbit-foot {
+  width: 250px;
+  padding: 5px 0 10px 5px;
+  border: 1px solid darkgray;
+  background-color: lightgreen;
+}
+
+.orbit-foot-endx-title, .orbit-foot-endy-title{
+  display: inline-block;
+  width: $label-width;
+}
+
 .savings { color: $vin-green; }
 .loss { color: $vin-red; }
 input.small { width: 46px; }
+
+
 

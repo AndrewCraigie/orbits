@@ -11,22 +11,24 @@ const appSettings = {
   defaultId2: "twoid",
   cX: 0,
   cY: 0,
+  endX: 0,
+  endY: 0,
   defaultOrbit: {
     orbitDefId: "1",
     n: "1",
     cX: "0",
     cY: "0",
-    r: "200",
-    phase: "45",
-    a: "2",
-    b: "3",
+    r: "50",
+    phase: "0",
+    a: "1",
+    b: "2",
     fX: "r * Math.cos((t * a) + phase)",
     fY: "r * Math.sin((t * a) + phase)",
     endX: "0",
     endY: "0",
     isValid: true
   }
-}
+};
 
 class AppSettingsApi {
 

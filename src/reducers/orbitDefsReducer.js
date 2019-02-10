@@ -1,8 +1,7 @@
 import {
-  ADD_NEW_ORBITDEF,
-  DELETE_ORBITDEF,
-  ORBIT_DEF_INPUT_CHANGE,
-  LOAD_ORBIT_DEFS_SUCCESS
+  LOAD_ORBIT_DEFS_SUCCESS,
+  ORBIT_DEFS_CHANGE,
+  STATE_CHANGE,
 } from '../constants/actionTypes';
 
 import initialState from './initialState';
@@ -14,13 +13,10 @@ export default function orbitDefsReducer(state = initialState.orbitDefs, action)
     case LOAD_ORBIT_DEFS_SUCCESS:
       return action.orbitDefs;
 
-    case ADD_NEW_ORBITDEF:
+    case ORBIT_DEFS_CHANGE:
       return action.orbitDefs;
 
-    case DELETE_ORBITDEF:
-      return action.orbitDefs;
-
-    case ORBIT_DEF_INPUT_CHANGE:
+    case STATE_CHANGE:
       return action.orbitDefs;
 
     default:

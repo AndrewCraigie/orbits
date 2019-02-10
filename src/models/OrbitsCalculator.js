@@ -22,16 +22,15 @@ export function calculateOrbits(appSettings, orbitDefs){
   let interval = parseFloat(appSettings.interval);
 
   let t = currentT * interval;
-  t = 0;
 
   // Iterate over all obrbitDefs
   // Calculate endX, endY using 'evaluated' functions and variables
   // Keep a track of previously calculated endX, endY
 
-  let prevX = appSettings.cX;
-  let prevY = appSettings.cY;
-  let endX = 0;
-  let endY = 0;
+  let prevX = parseFloat(appSettings.cX);
+  let prevY = parseFloat(appSettings.cY);
+  let endX = prevX;
+  let endY = prevY;
 
 
   let calculatedOrbitDefs = [];
@@ -93,7 +92,10 @@ export function calculateOrbits(appSettings, orbitDefs){
 
   }
 
-  return calculatedOrbitDefs;
+  let calculatedAppSettings = Object.assign({}, appSettings, {endX: endX}, {endY: endY});
+
+
+  return {oribtDefs: calculatedOrbitDefs, appSettings: calculatedAppSettings};
 
 
 }
