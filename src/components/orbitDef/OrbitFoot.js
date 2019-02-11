@@ -1,25 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import OrbitDefPenAppearance from './OrbitDefPenAppearance';
+
 
 const OrbitFoot = ({appSettings}) => {
 
   return (
     <div className="orbit-foot">
-      <label><span className="orbit-foot-endx-title">End X</span>
-        <input
-          type="text"
-          name="endX"
-          value={appSettings.endX}
-        />
-      </label>
-      <label><span className="orbit-foot-endy-title">End Y</span>
-        <input
-          type="text"
-          name="endY"
-          value={appSettings.endY}
-        />
-      </label>
+      <div className="orbit-foot-end-controls">
+        <label><span className="orbit-foot-endx-title">End X</span>
+          <input
+            type="text"
+            name="endX"
+            value={appSettings.endX}
+          />
+        </label>
+        <label><span className="orbit-foot-endy-title">End Y</span>
+          <input
+            type="text"
+            name="endY"
+            value={appSettings.endY}
+          />
+        </label>
+      </div>
     </div>
   )
 

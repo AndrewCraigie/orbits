@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import OrbitDefTextInput from './OrbitDefTextInput';
 import OrbitDefIdInput from './OrbitDefIdInput';
 import OrbitDefAppearance from './OrbitDefAppearance';
+import OrbitDefPenAppearance from './OrbitDefPenAppearance';
 
 // cX, cY, n, radius, phase, a, b, endX, endY
 
-const OrbitDef = ({inputChange, deleteOrbit, orbitDef}) => {
+const OrbitDef = ({index, inputChange, deleteOrbit, orbitDef}) => {
 
   let __inputChange = (e) => {
 
@@ -39,7 +40,7 @@ const OrbitDef = ({inputChange, deleteOrbit, orbitDef}) => {
     >
       <div className="orbit-def-controls-left">
         <p className="orbit-def-id">{orbitDef.orbitDefId}</p>
-        <input type="button" name="delete" defaultValue="-" onClick={deleteOrbitDef}/>
+        {index == 0 ?  null : <input type="button" name="delete" defaultValue="-" onClick={deleteOrbitDef}/>}
         <OrbitDefIdInput name="orbitDefId" value={orbitDef.orbitDefId} onChange={__inputChange}/>
         <OrbitDefTextInput name="cX" value={orbitDef.cX} onChange={__inputChange} hidden={false} readonly/>
         <OrbitDefTextInput name="cY" value={orbitDef.cY} onChange={__inputChange} hidden={false} readonly/>
@@ -69,6 +70,11 @@ const OrbitDef = ({inputChange, deleteOrbit, orbitDef}) => {
                             propPrefix={"Curve"}
                             onChange={__inputChange}
                             onChecked={__checkChange}/>
+        <OrbitDefPenAppearance displayName={"Pen"}
+                               orbitDef={orbitDef}
+                               propPrefix={"Pen"}
+                               onChange={__inputChange}
+                               onChecked={__checkChange}/>
       </div>
     </form>
   );
@@ -76,9 +82,11 @@ const OrbitDef = ({inputChange, deleteOrbit, orbitDef}) => {
 };
 
 OrbitDef.propTypes = {
-  orbitDef: PropTypes.object.isRequired,
+  index: PropTypes.number.isRequired,
+  inputChange: PropTypes.func.isRequired,
   deleteOrbit: PropTypes.func.isRequired,
-  inputChange: PropTypes.func.isRequired
+  actions: PropTypes.object.isRequired,
+  orbitDef: PropTypes.object.isRequired
 };
 
 export default OrbitDef;

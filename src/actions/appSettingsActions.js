@@ -31,6 +31,21 @@ export function __stateChange(orbitDefs, appSettings){
 }
 
 
+export function incrementTime(){
+  return function (dispatch, getState) {
+
+    const state = getState();
+
+    const newT = parseFloat(state.appSettings.currentT) + parseFloat(state.appSettings.interval);
+
+    let newAppSettings = Object.assign({}, state.appSettings, {currentT: newT});
+    let calculatedState = calculateOrbits(newAppSettings, state.orbitDefs);
+
+    dispatch(__stateChange(calculatedState.oribtDefs, calculatedState.appSettings));
+
+  };
+}
+
 export function timeChange(value){
   return function(dispatch, getState){
 

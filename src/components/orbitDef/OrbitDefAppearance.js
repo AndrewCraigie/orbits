@@ -27,13 +27,13 @@ const OrbitDefAppearance = ({orbitDef, propPrefix, displayName, onChange, onChec
           onChange={onChange}
           name={propPrefix.toLowerCase() + "StrokeWeight"}
           value={orbitDef[propPrefix.toLowerCase() + "StrokeWeight"]}/>
-          <OrbitDefShowElement
-            name={propPrefix.toLowerCase() + "Show"}
-            displayName={propPrefix.toLowerCase() + "Show"}
-            value={propPrefix.toLowerCase() + "Show"}
-            checked={orbitDef[propPrefix.toLowerCase() + "Show"]}
-            onChecked={onChecked}
-          />
+          {/*<OrbitDefShowElement*/}
+            {/*name={propPrefix.toLowerCase() + "Show"}*/}
+            {/*displayName={propPrefix.toLowerCase() + "Show"}*/}
+            {/*value={propPrefix.toLowerCase() + "Show"}*/}
+            {/*checked={orbitDef[propPrefix.toLowerCase() + "Show"]}*/}
+            {/*onChecked={onChecked}*/}
+          {/*/>*/}
       </fieldset>
     </div>
   );

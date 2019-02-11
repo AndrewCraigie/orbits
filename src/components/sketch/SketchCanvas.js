@@ -42,8 +42,14 @@ class SketchCanvas extends React.Component{
 
   drawPen(ctx, orb){
 
-    const strokeRGBA = [...colorUtils.hexToRgb(orb.curveColor), orb.curveOpacity ].join(', ');
+    const penRGBA = [...colorUtils.hexToRgb(orb.curveColor), 1.0 ].join(', ');
 
+    ctx.save();
+    ctx.beginPath();
+    ctx.fillStyle = `rgba(${penRGBA})`;
+    ctx.arc(orb.endX, orb.endY, orb.penSize * 0.5, 0, Math.PI * 2, true);
+    ctx.fill();
+    ctx.restore();
 
   }
 
@@ -62,8 +68,10 @@ class SketchCanvas extends React.Component{
 
     for(let orb of this.props.orbitDefs){
 
-      this.drawArm(ctx, orb);
-      this.drawOrb(ctx, orb);
+      if(orb.armShow){this.drawArm(ctx, orb)}
+      if(orb.orbitShow){this.drawOrb(ctx, orb)}
+      if(orb.penShow){this.drawPen(ctx, orb)}
+      // How to optionally show pen and curve?
 
     }
 
@@ -74,6 +82,7 @@ class SketchCanvas extends React.Component{
     return(
       <canvas
         ref={this.canvasRef}
+        className={this.props.animating ? 'canvas-animating' : 'canvas-not-animating'}
         width={"800"}
         height={"800"}
       >
@@ -89,6 +98,7 @@ class SketchCanvas extends React.Component{
 SketchCanvas.propTypes = {
   appSettings: PropTypes.object.isRequired,
   orbitDefs: PropTypes.array.isRequired,
+  animating: PropTypes.bool.isRequired
 };
 
 

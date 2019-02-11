@@ -5,9 +5,15 @@ import OrbitDef from './OrbitDef';
 
 const OrbitDefsList = ({ inputChange, deleteOrbit, actions, appSettings, orbitDefs }) => {
 
-  let orbitDefsElements = orbitDefs.map(orbDef => {
+  let orbitDefsElements = orbitDefs.map((orbDef, index) => {
     return (
-      <OrbitDef key={orbDef.orbitDefId} inputChange={inputChange} deleteOrbit={deleteOrbit} actions={actions} orbitDef={orbDef}/>
+      <OrbitDef
+        key={orbDef.orbitDefId}
+        index={index}
+        inputChange={inputChange}
+        deleteOrbit={deleteOrbit}
+        actions={actions}
+        orbitDef={orbDef}/>
     )
   });
 

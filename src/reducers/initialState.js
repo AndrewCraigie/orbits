@@ -13,6 +13,12 @@ export default {
     cY: 0,
     endX: 0,
     endY: 0,
+    curveColor: "#0000FF",
+    curveStrokeWeight: 1,
+    curveOpacity: 1,
+    curveShow: true,
+    penSize: 10,
+    penShow: true,
     defaultOrbitDef: {
       orbitDefId: "1",
       n: "1",
@@ -38,7 +44,9 @@ export default {
       curveColor: "#0000FF",
       curveStrokeWeight: 1,
       curveOpacity: 1,
-      curveShow: true
+      curveShow: true,
+      penSize: 10,
+      penShow: true
     }
   }
 }

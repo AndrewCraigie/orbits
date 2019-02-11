@@ -4,7 +4,7 @@ import ShortId from 'shortid';
 const orbitDefs = [
   {
     orbitDefId: "threeid",
-    n: "29",
+    n: "1",
     cX: "0",
     cY: "0",
     r: "80",
@@ -27,7 +27,9 @@ const orbitDefs = [
     curveColor: "#0000FF",
     curveStrokeWeight: 1,
     curveOpacity: 1,
-    curveShow: true
+    curveShow: true,
+    penSize: 10,
+    penShow: true
   },
   {
     orbitDefId: "twoid",
@@ -54,7 +56,9 @@ const orbitDefs = [
     curveColor: "#0000FF",
     curveStrokeWeight: 1,
     curveOpacity: 1,
-    curveShow: true
+    curveShow: true,
+    penSize: 10,
+    penShow: true
   }
 ];
 

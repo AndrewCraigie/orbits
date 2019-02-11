@@ -4,8 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
 import SketchCanvas from '../sketch/SketchCanvas';
-
-
+import PlayControls from './PlayControls';
 import * as actions from "../../actions/orbitDefsActions";
 import * as appActions from "../../actions/appSettingsActions";
 
@@ -14,23 +13,64 @@ export class SketchControls extends React.Component {
 
   constructor(props, context) {
     super(props, context);
+    this.state = {
+      animating: false
+    };
 
     this.updateAnimationState = this.updateAnimationState.bind(this);
+    this.play = this.play.bind(this);
+    this.stop = this.stop.bind(this);
+    this.goToStart = this.goToStart.bind(this);
+    this.goToEnd = this.goToEnd.bind(this);
+
+    this.incrementTime = this.incrementTime.bind(this);
 
   }
 
-  componentDidMount() {
+  play(){
+    this.setState({animating: true});
     this.rAF = requestAnimationFrame(this.updateAnimationState);
   }
 
-  componentWillUnmount() {
+  stop(){
+    this.setState({animating: false});
     cancelAnimationFrame(this.rAF);
   }
 
-  updateAnimationState(){
-    // Change some state here
+  goToStart(){
+    console.log("Go To Start");
+  }
 
-    this.rAF = requestAnimationFrame(this.updateAnimationState);
+  goToEnd(){
+    console.log("Go To End");
+  }
+
+  componentDidMount() {
+
+
+  }
+
+  componentWillUnmount() {
+
+    if(this.state.animating){
+      cancelAnimationFrame(this.rAF);
+    }
+
+  }
+
+  incrementTime(){
+    this.props.dispatch(appActions.incrementTime());
+  }
+
+  updateAnimationState(){
+
+    if(this.state.animating){
+
+      // increment appSettings currentT
+      this.incrementTime();
+
+      this.rAF = requestAnimationFrame(this.updateAnimationState);
+    }
   }
 
 
@@ -39,7 +79,16 @@ export class SketchControls extends React.Component {
       <div className="sketch-area">
         <SketchCanvas
           appSettings={this.props.appSettings}
+          animating={this.state.animating}
           orbitDefs={this.props.orbitDefs}
+        />
+        <PlayControls
+          appSettings={this.props.appSettings}
+          orbitDefs={this.props.orbitDefs}
+          play={this.play}
+          stop={this.stop}
+          goToStart={this.goToStart}
+          goToEnd={this.goToEnd}
         />
       </div>
     )

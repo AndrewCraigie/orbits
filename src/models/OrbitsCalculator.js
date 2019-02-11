@@ -95,8 +95,6 @@ export function calculateOrbits(appSettings, orbitDefs){
 
   let calculatedAppSettings = Object.assign({}, appSettings, {endX: endX}, {endY: endY});
 
-
   return {oribtDefs: calculatedOrbitDefs, appSettings: calculatedAppSettings};
-
 
 }

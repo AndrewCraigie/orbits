@@ -13,6 +13,12 @@ const appSettings = {
   cY: 400,
   endX: 0,
   endY: 0,
+  curveColor: "#0000FF",
+  curveStrokeWeight: 1,
+  curveOpacity: 1,
+  curveShow: true,
+  penSize: 10,
+  penShow: true,
   defaultOrbitDef: {
     orbitDefId: "1",
     n: "1",
@@ -30,15 +36,17 @@ const appSettings = {
     orbitColor: "#FF0000",
     orbitStrokeWeight: 1,
     orbitOpacity: 0.5,
-    showOrbit: true,
+    orbitShow: true,
     armColor: "#00FF00",
     armStrokeWeight: 1,
     armOpacity: 0.5,
-    showArm: true,
+    armShow: true,
     curveColor: "#0000FF",
     curveStrokeWeight: 1,
     curveOpacity: 1,
-    showCurve: true
+    curveShow: true,
+    penSize: 10,
+    penShow: true
   }
 };
 

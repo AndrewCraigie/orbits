@@ -74,10 +74,11 @@ export function addOrbitDef(){
 }
 
 // ------------------------------------------------------------------
-export function loadOrbitDefsSuccess(orbitDefs){
+export function loadOrbitDefsSuccess(orbitDefs, appSettings){
   return {
     type: types.LOAD_ORBIT_DEFS_SUCCESS,
-    orbitDefs
+    orbitDefs,
+    appSettings
   }
 }
 
