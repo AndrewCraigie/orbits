@@ -73,9 +73,9 @@ export class OrbitDefsControls extends React.Component{
 
   render(){
     return (
-      <div className={'orbits-page'}>
-        <div className="page-content">
+      <div className={'col orbits-page-left'}>
           <div className="orbits-controls">
+            <div className="orbits-head-wrapper">
             <OrbitHead
               onTimeChange={this.onTimeChange}
               onIntervalChange={this.onIntervalChange}
@@ -83,6 +83,7 @@ export class OrbitDefsControls extends React.Component{
               onCYChange={this.onCYChange}
               appSettings={this.props.appSettings}
             />
+            </div>
             <OrbitDefsList
               inputChange={this.inputChange}
               deleteOrbit={this.deleteOrbit}
@@ -92,7 +93,6 @@ export class OrbitDefsControls extends React.Component{
             <OrbitFoot appSettings={this.props.appSettings}/>
             <OrbitDefAddControl addOrbit={this.addOrbit} />
           </div>
-        </div>
       </div>
     )
   }

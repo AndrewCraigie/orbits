@@ -6,7 +6,6 @@ import {bindActionCreators} from 'redux';
 import OrbitDefsControls from './OrbitDefsControls';
 import SketchControls from './SketchControls';
 
-
 import * as actions from "../../actions/orbitDefsActions";
 import * as appActions from "../../actions/appSettingsActions";
 
@@ -20,17 +19,17 @@ export class OrbitsPage extends React.Component {
 
   render() {
     return (
-      <div className={'orbits-page'}>
-        <div className="page-content">
-          <div className="orbits-controls">
-            <OrbitDefsControls
-              appSettings={this.props.appSettings}
-              actions={this.props.actions}
-              appActions={this.props.appActions}
-              orbitDefs={this.props.orbitDefs}
-              dispatch={this.props.dispatch}
-            />
-          </div>
+      <div className="row orbits-page">
+        <div className="col-3">
+          <OrbitDefsControls
+            appSettings={this.props.appSettings}
+            actions={this.props.actions}
+            appActions={this.props.appActions}
+            orbitDefs={this.props.orbitDefs}
+            dispatch={this.props.dispatch}
+          />
+        </div>
+        <div className={"col-9 ml-auto"}>
           <SketchControls
             appSettings={this.props.appSettings}
             appActions={this.props.appActions}
@@ -41,7 +40,6 @@ export class OrbitsPage extends React.Component {
       </div>
     )
   }
-
 
 }
 

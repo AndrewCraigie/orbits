@@ -4,17 +4,18 @@ import PropTypes from 'prop-types';
 const OrbitDefTextInput = ({name, value, onChange, hidden}) => {
 
   return (
-    <label className="orbit-def-input-label">
-      <span className="orbit-def-label-title">{name}</span>
-
+    <label className="form-group row">
+      <span className="col-sm-3 col-form-label label-xs">{name}</span>
+      <div className="col-sm-9">
     <input
-      className="orbit-def-text-input"
+      className="form-control input-xs"
       name={name}
       type="text"
       value={value}
       onChange={onChange}
       hidden={hidden}
       />
+      </div>
     </label>
   );
 

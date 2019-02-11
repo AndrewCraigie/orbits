@@ -20,7 +20,7 @@ class App extends React.Component {
   render() {
     const activeStyle = { color: 'blue' };
     return (
-      <div>
+      <div className="container-fluid">
         <header>
           <NavLink exact to="/" activeStyle={activeStyle}>Orbits</NavLink>
           {' | '}

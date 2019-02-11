@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from 'react-bootstrap/Button';
+
 import GoStartIcon from '../icons/GoStartIcon';
 import PlayIcon from '../icons/PlayIcon';
 import StopIcon from '../icons/StopIcon';
@@ -10,18 +10,26 @@ const PlayButtonGroup = ({appSettings, play, stop, goToStart, goToEnd}) => {
 
   return (
     <div className="play-button-group">
-      <Button onClick={goToStart}
-              variant="primary"
-      ><GoStartIcon/> Start</Button>
-      <Button onClick={play}
-              variant="primary"
-      ><PlayIcon/> Play</Button>
-      <Button onClick={stop}
-              variant="primary"
-      ><StopIcon/> Stop</Button>
-      <Button onClick={goToEnd}
-              variant="primary"
-      ><GoEndIcon/> End</Button>
+      <button
+        className="btn btn-primary playback-btn"
+        onClick={goToStart}
+      ><GoStartIcon/> Start
+      </button>
+      <button
+        className="btn btn-primary playback-btn"
+        onClick={play}
+      ><PlayIcon/> Play
+      </button>
+      <button
+        className="btn btn-primary playback-btn"
+        onClick={stop}
+      ><StopIcon/> Stop
+      </button>
+      <button
+        className="btn btn-primary playback-btn"
+        onClick={goToEnd}
+      ><GoEndIcon/> End
+      </button>
     </div>
   )
 

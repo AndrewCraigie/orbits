@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import OrbitDef from './OrbitDef';
+import OrbitDefTabber from './OrbitDefTabber';
 
 
 const OrbitDefsList = ({ inputChange, deleteOrbit, actions, appSettings, orbitDefs }) => {
 
   let orbitDefsElements = orbitDefs.map((orbDef, index) => {
     return (
-      <OrbitDef
+      <OrbitDefTabber
         key={orbDef.orbitDefId}
         index={index}
         inputChange={inputChange}

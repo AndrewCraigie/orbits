@@ -8,15 +8,10 @@ $label-width: 49px;
 body {
   font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.4em;
-  color: #4d4d4d;
-  margin: 0;
-  padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
   font-smoothing: antialiased;
-  font-weight: 300;
   background-color: #e7ecea;
-
 }
 
 td {
@@ -40,26 +35,22 @@ header{
   padding: 5px;
 }
 
-.orbits-page{
-  margin-top: 10px;
-  padding: 10px;
-  background-color: lightgray;
-}
 
-.page-content{
-  display: flex;
-}
 
-.orbits-controls{
-  width: 400px;
-}
+//.page-content{
+//  display: flex;
+//}
 
-.orbit-head {
-  width: 400px;
-  padding: 5px 0 10px 5px;
-  border: 1px solid darkgray;
-  background-color: lightgreen;
-}
+//.orbits-controls{
+//  width: 400px;
+//}
+
+//.orbit-head {
+//  width: 400px;
+//  padding: 5px 0 10px 5px;
+//  border: 1px solid darkgray;
+//  background-color: lightgreen;
+//}
 
 //.orbit-head-t-title{
 //  display: inline-block;
@@ -77,17 +68,17 @@ header{
 //}
 
 
-.orbits-defs-list{
-  width: 400px;
-  margin-bottom: 5px;
-}
-
-.orbit-def-form{
-  width: 400px;
-  padding: 5px 0 10px 5px;
-  border: 1px solid darkgray;
-  background-color: white;
-}
+//.orbits-defs-list{
+//  width: 400px;
+//  margin-bottom: 5px;
+//}
+//
+//.orbit-def-form{
+//  width: 400px;
+//  padding: 5px 0 10px 5px;
+//  border: 1px solid darkgray;
+//  background-color: white;
+//}
 
 //.orbit-def-form input[type=submit]{
 //  display:block;
@@ -104,41 +95,126 @@ header{
 //  width: $label-width;
 //}
 
-.orbit-add-controls {
-  position: relative;
-  width: 404px;
-  height: 25px;
-}
-
-.orbit-add-button {
-  float: right;
-}
-
-.orbit-def-id {
-  font-size: 12px;
-  display: inline-block;
-  margin: 0;
-  padding: 0 4px 0 0;
-  float: right;
-}
-
-.orbit-foot {
-  width: 400px;
-  padding: 5px 0 10px 5px;
-  border: 1px solid darkgray;
-  background-color: lightgreen;
-}
+//.orbit-add-controls {
+//  position: relative;
+//  width: 404px;
+//  height: 25px;
+//}
+//
+//.orbit-add-button {
+//  float: right;
+//}
+//
+//.orbit-def-id {
+//  font-size: 12px;
+//  display: inline-block;
+//  margin: 0;
+//  padding: 0 4px 0 0;
+//  float: right;
+//}
+//
+//.orbit-foot {
+//  width: 400px;
+//  padding: 5px 0 10px 5px;
+//  border: 1px solid darkgray;
+//  background-color: lightgreen;
+//}
 
 //.orbit-foot-endx-title, .orbit-foot-endy-title{
 //  display: inline-block;
 //  width: $label-width;
 //}
 
-.sketch-area{
-  width: 900px;
-  height: 800px;
-  margin-left: 20px;
-  background-color: lightblue;
+//.sketch-area{
+//  width: 900px;
+//  height: 800px;
+//  margin-left: 20px;
+//  background-color: lightblue;
+//}
+
+.orbits-head-wrapper{
+  margin-left: -10px;
+  margin-right: -10px;
+  padding-right: 5px;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+}
+
+.orbit-head{
+  padding-top: 5px;
+
+}
+
+.orbits-defs-list{
+  margin-left: -10px;
+  margin-right: -10px;
+  padding-right: 5px;
+  background-color: pink;
+}
+
+.input-xs {
+  height: 22px;
+  padding: 2px 5px;
+  font-size: 12px;
+  line-height: 1.5; /* If Placeholder of the input is moved up, rem/modify this. */
+  border-radius: 3px;
+}
+
+.label-xs{
+  height: 22px;
+  padding: 2px 5px;
+  padding-left: 20px;
+  font-size:12px;
+  line-height: 1.5;
+}
+
+label.form-group.row{
+  margin-left: 4px;
+}
+
+.orbit-def-id-input{
+  display: none;
+}
+
+.hidden-true{
+  display:none;
+}
+
+.orbit-def-controls-left{
+  background-color: white;
+}
+
+.number-input-narrow{
+  width: 70px;
+}
+
+.input-narrow{
+  width: 70px;
+}
+
+.form-group.row{
+  margin-bottom: 0.5em;
+}
+
+.delete-orb-def-btn{
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+  padding: 0;
+  margin: 2px;
+  float: right;
+}
+
+.orbits-page{
+  background-color: white;
+}
+
+.orbits-page-left{
+  background-color: white;
+}
+
+.orbits-controls{
+  background-color: white;
 }
 
 .sketch-canvas{
@@ -152,6 +228,9 @@ header{
   border: 1px solid darkgray;
 }
 
+
+
+/* Playback Controls */
 .play-controls{
   width: 800px;
   height: 200px;
@@ -159,6 +238,10 @@ header{
   background-color: gainsboro;
 }
 
+.playback-btn{
+  margin-left: 3px;
+  margin-right: 3px;
+}
 .play-icon-svg{
 
 }
@@ -183,6 +266,8 @@ header{
 .go-end-icon{
   fill:white;
 }
+
+
 
 .savings { color: $vin-green; }
 .loss { color: $vin-red; }

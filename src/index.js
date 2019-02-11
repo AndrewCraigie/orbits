@@ -9,6 +9,7 @@ import Root from './components/Root';
 import { loadOrbitDefs } from './actions/orbitDefsActions';
 import { loadAppSettings } from './actions/appSettingsActions';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/styles.scss';
 require('./favicon.ico'); // Tell webpack to load favicon.ico
 
