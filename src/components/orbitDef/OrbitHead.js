@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
 const OrbitHead = ({appSettings, onTimeChange, onIntervalChange, onCXChange, onCYChange}) => {
 
   return (
     <div className="orbit-head">
+
       <label><span className="orbit-head-t-title">Time</span>
         <input
           type="number"

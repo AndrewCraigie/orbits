@@ -6,6 +6,7 @@ const OrbitDefTextInput = ({name, value, onChange, hidden}) => {
   return (
     <label className="orbit-def-input-label">
       <span className="orbit-def-label-title">{name}</span>
+
     <input
       className="orbit-def-text-input"
       name={name}

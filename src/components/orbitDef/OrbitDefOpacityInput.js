@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+
 const OrbitDefOpacityInput = ({name, displayName, value, onChange}) => {
 
   return (
     <label className="orbit-input-label">
+
       <span className="orbit-label-title">{displayName}</span>
       <input
         className="orbit-text-input"

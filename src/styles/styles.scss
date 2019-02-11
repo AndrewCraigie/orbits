@@ -51,65 +51,63 @@ header{
 }
 
 .orbits-controls{
-  width: 260px;
+  width: 400px;
 }
 
 .orbit-head {
-  width: 250px;
+  width: 400px;
   padding: 5px 0 10px 5px;
   border: 1px solid darkgray;
   background-color: lightgreen;
 }
 
-.orbit-head-t-title{
-  display: inline-block;
-  width: $label-width;
-}
-
-.orbit-head-interval-title{
-  display: inline-block;
-  width: $label-width;
-}
-
-.orbit-head-c-title{
-  display: inline-block;
-  width: $label-width;
-}
-
+//.orbit-head-t-title{
+//  display: inline-block;
+//  width: $label-width;
+//}
+//
+//.orbit-head-interval-title{
+//  display: inline-block;
+//  width: $label-width;
+//}
+//
+//.orbit-head-c-title{
+//  display: inline-block;
+//  width: $label-width;
+//}
 
 
 .orbits-defs-list{
-  width: 250px;
+  width: 400px;
   margin-bottom: 5px;
 }
 
 .orbit-def-form{
-  width: 250px;
+  width: 400px;
   padding: 5px 0 10px 5px;
   border: 1px solid darkgray;
-  background-color: lightblue;
+  background-color: white;
 }
 
-.orbit-def-form input[type=submit]{
-  display:block;
-  margin-bottom: 7px;
-}
+//.orbit-def-form input[type=submit]{
+//  display:block;
+//  margin-bottom: 7px;
+//}
 
-.orbit-def-input-label {
-  display:block;
-  height: 23px;
-}
-
-.orbit-def-label-title {
-  display: inline-block;
-  width: $label-width;
-}
+//.orbit-def-input-label {
+//  display:block;
+//  height: 23px;
+//}
+//
+//.orbit-def-label-title {
+//  display: inline-block;
+//  width: $label-width;
+//}
 
 .orbit-add-controls {
   position: relative;
-  width: 255px;
+  width: 404px;
   height: 25px;
-
 }
 
 .orbit-add-button {
@@ -125,16 +123,16 @@ header{
 }
 
 .orbit-foot {
-  width: 250px;
+  width: 400px;
   padding: 5px 0 10px 5px;
   border: 1px solid darkgray;
   background-color: lightgreen;
 }
 
-.orbit-foot-endx-title, .orbit-foot-endy-title{
-  display: inline-block;
-  width: $label-width;
-}
+//.orbit-foot-endx-title, .orbit-foot-endy-title{
+//  display: inline-block;
+//  width: $label-width;
+//}
 
 .sketch-area{
   width: 900px;
@@ -159,6 +157,31 @@ header{
   height: 200px;
   border: 1px solid darkgray;
   background-color: gainsboro;
+}
+
+.play-icon-svg{
+
+}
+.play-icon{
+  fill:white;
+}
+.stop-icon-svg{
+  margin-right: 4px;
+}
+.stop-icon{
+  fill:white;
+}
+.go-start-svg{
+  margin-right: 4px;
+}
+.go-start-icon{
+  fill:white;
+}
+.go-end-svg{
+  margin-right: 4px;
+}
+.go-end-icon{
+  fill:white;
 }
 
 .savings { color: $vin-green; }
