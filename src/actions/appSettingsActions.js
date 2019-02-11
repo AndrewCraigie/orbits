@@ -89,7 +89,6 @@ export function cYChange(value){
     let cYValue = parseFloat(value);
 
     let newAppSettings = Object.assign({}, state.appSettings, {cY: cYValue});
-    console.log("cYChagne", newAppSettings);
     let calculatedState = calculateOrbits(newAppSettings, state.orbitDefs);
 
     dispatch(__stateChange(calculatedState.oribtDefs, calculatedState.appSettings));

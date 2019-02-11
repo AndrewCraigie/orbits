@@ -59,7 +59,7 @@ export function addOrbitDef(){
 
     const state = getState();
 
-    let newOrbitDef = Object.assign({}, state.appSettings.defaultOrbit);
+    let newOrbitDef = Object.assign({}, state.appSettings.defaultOrbitDef);
     newOrbitDef.orbitDefId = OrbitsApi.generateId();
 
     let newOrbitDefs = [

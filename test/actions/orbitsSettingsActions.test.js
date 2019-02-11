@@ -27,7 +27,7 @@ describe('Actions', () => {
     plotScale: 1,
     defaultId1: "oneid",
     defaultId2: "twoid",
-    defaultOrbit: {
+    defaultOrbitDef: {
       orbitDefId: "1",
       n: "1",
       cX: "0",

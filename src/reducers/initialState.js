@@ -13,7 +13,7 @@ export default {
     cY: 0,
     endX: 0,
     endY: 0,
-    defaultOrbit: {
+    defaultOrbitDef: {
       orbitDefId: "1",
       n: "1",
       cX: "0",
@@ -26,7 +26,19 @@ export default {
       fY: "r * Math.sin((t * a) + phase)",
       endX: "0",
       endY: "0",
-      isValid: true
+      isValid: true,
+      orbitColor: "#FF0000",
+      orbitStrokeWeight: 1,
+      orbitOpacity: 0.5,
+      orbitShow: true,
+      armColor: "#00FF00",
+      armStrokeWeight: 1,
+      armOpacity: 0.5,
+      armShow: true,
+      curveColor: "#0000FF",
+      curveStrokeWeight: 1,
+      curveOpacity: 1,
+      curveShow: true
     }
   }
 }

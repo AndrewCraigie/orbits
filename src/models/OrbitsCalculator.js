@@ -69,21 +69,22 @@ export function calculateOrbits(appSettings, orbitDefs){
     endX += calcX(n, r, phaseRads, a, b, t);
     endY += calcY(n, r, phaseRads, a, b, t);
 
-    let newOrbDef = {
-      orbitDefId: orbDef.orbitDefId,
-      cX: prevX,
-      cY: prevY,
-      n: n,
-      r: r,
-      phase: phase,
-      a: a,
-      b: b,
-      fX: orbDef.fX,
-      fY: orbDef.fY,
-      endX: endX,
-      endY: endY,
-      isValid: true
-    };
+    let newOrbDef = Object.assign({},
+      orbDef,
+      {orbitDefId: orbDef.orbitDefId},
+      {cX: prevX},
+      {cY: prevY},
+      {n: n},
+      {r: r},
+      {phase: phase},
+      {a: a},
+      {b: b},
+      {fX: orbDef.fX},
+      {fY: orbDef.fY},
+      {endX: endX},
+      {endY: endY},
+      {isValid: true}
+    );
 
     prevX = endX;
     prevY = endY;

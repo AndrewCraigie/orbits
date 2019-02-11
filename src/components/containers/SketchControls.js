@@ -3,50 +3,51 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-import OrbitDefsControls from './OrbitDefsControls';
-import SketchControls from './SketchControls';
+import SketchCanvas from '../sketch/SketchCanvas';
 
 
 import * as actions from "../../actions/orbitDefsActions";
 import * as appActions from "../../actions/appSettingsActions";
 
 
-export class OrbitsPage extends React.Component {
+export class SketchControls extends React.Component {
 
   constructor(props, context) {
     super(props, context);
 
+    this.updateAnimationState = this.updateAnimationState.bind(this);
+
   }
+
+  componentDidMount() {
+    this.rAF = requestAnimationFrame(this.updateAnimationState);
+  }
+
+  componentWillUnmount() {
+    cancelAnimationFrame(this.rAF);
+  }
+
+  updateAnimationState(){
+    // Change some state here
+
+    this.rAF = requestAnimationFrame(this.updateAnimationState);
+  }
+
 
   render() {
     return (
-      <div className={'orbits-page'}>
-        <div className="page-content">
-          <div className="orbits-controls">
-            <OrbitDefsControls
-              appSettings={this.props.appSettings}
-              actions={this.props.actions}
-              appActions={this.props.appActions}
-              orbitDefs={this.props.orbitDefs}
-              dispatch={this.props.dispatch}
-            />
-          </div>
-          <SketchControls
-            appSettings={this.props.appSettings}
-            appActions={this.props.appActions}
-            orbitDefs={this.props.orbitDefs}
-            dispatch={this.props.dispatch}
-          />
-        </div>
+      <div className="sketch-area">
+        <SketchCanvas
+          appSettings={this.props.appSettings}
+          orbitDefs={this.props.orbitDefs}
+        />
       </div>
     )
   }
 
-
 }
 
-OrbitsPage.propTypes = {
-  actions: PropTypes.object.isRequired,
+SketchControls.propTypes = {
   appActions: PropTypes.object.isRequired,
   appSettings: PropTypes.object.isRequired,
   orbitDefs: PropTypes.array.isRequired,
@@ -71,6 +72,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(OrbitsPage);
-
-
+)(SketchControls);

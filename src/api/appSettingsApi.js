@@ -9,11 +9,11 @@ const appSettings = {
   plotScale: 1,
   defaultId1: "oneid",
   defaultId2: "twoid",
-  cX: 0,
-  cY: 0,
+  cX: 400,
+  cY: 400,
   endX: 0,
   endY: 0,
-  defaultOrbit: {
+  defaultOrbitDef: {
     orbitDefId: "1",
     n: "1",
     cX: "0",
@@ -26,7 +26,19 @@ const appSettings = {
     fY: "r * Math.sin((t * a) + phase)",
     endX: "0",
     endY: "0",
-    isValid: true
+    isValid: true,
+    orbitColor: "#FF0000",
+    orbitStrokeWeight: 1,
+    orbitOpacity: 0.5,
+    showOrbit: true,
+    armColor: "#00FF00",
+    armStrokeWeight: 1,
+    armOpacity: 0.5,
+    showArm: true,
+    curveColor: "#0000FF",
+    curveStrokeWeight: 1,
+    curveOpacity: 1,
+    showCurve: true
   }
 };
 
