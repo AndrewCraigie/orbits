@@ -135,8 +135,9 @@ header{
 .orbits-head-wrapper{
   margin-left: -10px;
   margin-right: -10px;
+  margin-bottom: 4px;
   padding-right: 5px;
-  border: 1px solid lightgray;
+  border: 1px solid darkgray;
   border-radius: 4px;
 }
 
@@ -149,7 +150,7 @@ header{
   margin-left: -10px;
   margin-right: -10px;
   padding-right: 5px;
-  background-color: pink;
+
 }
 
 .input-xs {
@@ -180,8 +181,65 @@ label.form-group.row{
   display:none;
 }
 
-.orbit-def-controls-left{
+.tabber-btns{
+  margin-top: 2px;
+  float: left;
+
+}
+
+.tabber-settings, .tabber-appearance{
+  width: 18px;
+  height: 40px;
+  border-left: 1px solid darkgray;
+  border-top: 1px solid darkgray;
+  border-bottom: 1px solid darkgray;
+  border-right: 1px solid darkgray;
+  border-radius: 5px 0 0 5px;
+  margin-bottom: 1px;
+  z-index: 100;
   background-color: white;
+  cursor: pointer;
+}
+
+.tabber-active{
+  border-right: 0px solid darkgray;
+}
+
+.tabber-appearance{
+
+}
+
+.tabber-settings{
+
+}
+
+.settings-icon-svg, .palette-icon-svg{
+  margin-left: 1px;
+  margin-top: 10px;
+  pointer-events: none;
+}
+
+.settings-icon, .palette-icon{
+  fill: darkgray;
+  pointer-events: none;
+}
+
+.orbit-def-form{
+
+}
+
+.orbit-def-controls-left, .orbit-def-controls-right{
+  padding-top: 2px;
+}
+
+.orbit-def-settings-back, .orbit-def-palette-back{
+  margin-left: 17px;
+  border:1px solid darkgray;
+  border-radius: 0 5px 5px 0;
+  background-color: white;
+  margin-right: -8px;
+  padding-right: 5px;
+  padding-top: 4px;
 }
 
 .number-input-narrow{
@@ -210,11 +268,11 @@ label.form-group.row{
 }
 
 .orbits-page-left{
-  background-color: white;
+
 }
 
 .orbits-controls{
-  background-color: white;
+
 }
 
 .sketch-canvas{
