@@ -6,9 +6,9 @@ const OrbitDefStrokeWeightInput = ({name, displayName, value, onChange}) => {
 
   return (
     <label className="orbit-input-label">
-      <span className="orbit-label-title">{displayName}</span>
+      <span className="orbit-label-title col-form-label label-app-xs">{displayName}</span>
       <input
-        className="orbit-text-input"
+        className="form-control input-xs number-input-x-narrow"
         name={name}
         type="number"
         min="0.0"

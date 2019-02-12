@@ -1,9 +1,4 @@
-//   plotXOffset: 400,
-//   plotYOffset: 300,
-//   currentT: 0,
-//   interval: 0.04,
-//   iterations: 20000,
-//   plotScale: 1,
+import * as math from 'mathjs'
 
 export function calculateOrbits(appSettings, orbitDefs){
 
@@ -39,17 +34,6 @@ export function calculateOrbits(appSettings, orbitDefs){
 
     let orbDef = orbitDefs[i];
 
-
-    // TODO handle parse errors in some way
-    // Possibly have an errors object on each orbitdef
-    // or 'flat' errors store in appSettings
-    //
-    // orbDef.cX = currentX;
-    // orbDef.cY = currentY;
-
-    //let calcX = new Function('n', 'radius', 'phase', 'a', 'b', fxReturn);
-    // TODO decide which fields are functions
-
     let phase = orbDef.phase;
     let n = parseFloat(orbDef.n);
     let r = parseFloat(orbDef.r);
@@ -57,17 +41,17 @@ export function calculateOrbits(appSettings, orbitDefs){
     let a = parseFloat(orbDef.a);
     let b = parseFloat(orbDef.b);
 
-    let fX = orbDef.fX;
-    let fY = orbDef.fY;
+    const scope = {
+      t: t,
+      n: n,
+      r: r,
+      phase: phaseRads,
+      a: a,
+      b: b,
+    };
 
-    let fXReturn = `return ${fX}`;
-    let fYReturn = `return ${fY}`;
-
-    let calcX = new Function('n', 'r', 'phase', 'a', 'b', 't', fXReturn);
-    let calcY = new Function('n', 'r', 'phase', 'a', 'b', 't', fYReturn);
-
-    endX += calcX(n, r, phaseRads, a, b, t);
-    endY += calcY(n, r, phaseRads, a, b, t);
+    endX += math.eval(orbDef.fX, scope);
+    endY += math.eval(orbDef.fY, scope);
 
     let newOrbDef = Object.assign({},
       orbDef,

@@ -163,10 +163,27 @@ header{
 
 .label-xs{
   height: 22px;
-  padding: 2px 5px;
-  padding-left: 20px;
+  padding: 2px 5px 2px 20px;
   font-size:12px;
   line-height: 1.5;
+}
+
+.label-app-xs{
+  height: 22px;
+  font-size:12px;
+  line-height: 1.5;
+}
+
+.number-input-x-narrow{
+  width: 50px;
+}
+
+.show-check{
+  width: 18px;
+  height: 18px;
+  margin: 0 0 0 7px;
+  background-color: red;
+
 }
 
 label.form-group.row{
@@ -240,6 +257,13 @@ label.form-group.row{
   margin-right: -8px;
   padding-right: 5px;
   padding-top: 4px;
+}
+
+.appearance-control-group-name{
+  font-weight: bold;
+  color: darkgray;
+  margin: 0;
+  padding: 0;
 }
 
 .number-input-narrow{
@@ -323,6 +347,23 @@ label.form-group.row{
 }
 .go-end-icon{
   fill:white;
+}
+
+// function input focus glow
+.invalid:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: red;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.6);
+  outline: none;
+}
+
+.valid:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: green;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(0, 255, 0, 0.6);
+  outline: none;
 }
 
 

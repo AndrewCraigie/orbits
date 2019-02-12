@@ -6,9 +6,9 @@ const OrbitDefShowElement = ({name, displayName, value, checked, onChecked}) => 
 
   return (
     <label className="orbit-input-label">
-      <span className="orbit-label-title">{displayName}</span>
+      <span className="orbit-label-title col-form-label label-app-xs">{displayName}</span>
       <input
-        className="orbit-text-input"
+        className="form-check show-check"
         type="checkbox"
         name={name}
         value={value}

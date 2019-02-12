@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import OrbitDefTextInput from './OrbitDefTextInput';
+
 import OrbitDefNumberInput from './OrbitDefNumberInput';
 import OrbitDefIdInput from './OrbitDefIdInput';
 import OrbitDefAppearance from './OrbitDefAppearance';
 import OrbitDefPenAppearance from './OrbitDefPenAppearance';
 import OrbitDefNumberDelete from './OrbitDefNumberDelete';
+import OrbitDefFunctionInput from './OrbitDefFunctionInput';
 
 // cX, cY, n, radius, phase, a, b, endX, endY
 
@@ -13,13 +14,11 @@ const OrbitDef = ({index, inputChange, deleteOrbit, orbitDef}) => {
 
 
   let __inputChange = (e) => {
-
     inputChange(
       orbitDef,
       e.target.name,
       e.target.value
     )
-
   };
 
   let __checkChange = (e) => {
@@ -27,6 +26,15 @@ const OrbitDef = ({index, inputChange, deleteOrbit, orbitDef}) => {
       orbitDef,
       e.target.name,
       e.target.checked
+    )
+  };
+
+  let __funcChange = (fName, fValue, orbitDef) => {
+    console.log(fName, fValue, orbitDef);
+    inputChange(
+      orbitDef,
+      fName,
+      fValue
     )
   };
 
@@ -50,8 +58,8 @@ const OrbitDef = ({index, inputChange, deleteOrbit, orbitDef}) => {
         <OrbitDefNumberInput name="phase" value={orbitDef.phase} onChange={__inputChange} hidden={false}/>
         <OrbitDefNumberInput name="a" value={orbitDef.a} onChange={__inputChange} hidden={false}/>
         <OrbitDefNumberInput name="b" value={orbitDef.b} onChange={__inputChange} hidden={false}/>
-        <OrbitDefTextInput name="fX" value={orbitDef.fX} onChange={__inputChange} hidden={false}/>
-        <OrbitDefTextInput name="fY" value={orbitDef.fY} onChange={__inputChange} hidden={false}/>
+        <OrbitDefFunctionInput name="fX" value={orbitDef.fX} onChange={__funcChange} hidden={false}/>
+        <OrbitDefFunctionInput name="fY" value={orbitDef.fY} onChange={__funcChange} hidden={false}/>
         <OrbitDefNumberInput name="endX" value={orbitDef.endX} onChange={__inputChange} hidden={false} readonly/>
         <OrbitDefNumberInput name="endY" value={orbitDef.endY} onChange={__inputChange} hidden={false} readonly/>
       </div>

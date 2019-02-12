@@ -9,32 +9,41 @@ import OrbitDefShowElement from './OrbitDefShowElement';
 const OrbitDefAppearance = ({orbitDef, propPrefix, displayName, onChange, onChecked}) => {
 
   return (
-    <div className="orbit-def-appearance">
-      <fieldset className="orbit-label-title">
-        <legend>{displayName}</legend>
+    <div className="orbit-def-appearance col-12">
+      <p className="appearance-control-group-name">{displayName}</p>
+      <div className="form-row">
+        <div className="col-3">
         <OrbitDefColorInput
           onChange={onChange}
           name={propPrefix.toLowerCase() + "Color"}
           displayName={"Color"}
           value={orbitDef[propPrefix.toLowerCase() + "Color"]}/>
+        </div>
+        <div className="col-3">
         <OrbitDefOpacityInput
           displayName={"Opacity"}
           onChange={onChange}
           name={propPrefix.toLowerCase() + "Opacity"}
           value={orbitDef[propPrefix.toLowerCase() + "Opacity"]}/>
+        </div>
+        <div className="col-3">
         <OrbitDefStrokeWeightInput
-          displayName={"Stroke Weight"}
+          displayName={"Width"}
           onChange={onChange}
           name={propPrefix.toLowerCase() + "StrokeWeight"}
           value={orbitDef[propPrefix.toLowerCase() + "StrokeWeight"]}/>
-          {/*<OrbitDefShowElement*/}
-            {/*name={propPrefix.toLowerCase() + "Show"}*/}
-            {/*displayName={propPrefix.toLowerCase() + "Show"}*/}
-            {/*value={propPrefix.toLowerCase() + "Show"}*/}
-            {/*checked={orbitDef[propPrefix.toLowerCase() + "Show"]}*/}
-            {/*onChecked={onChecked}*/}
-          {/*/>*/}
-      </fieldset>
+        </div>
+        <div className="col-3">
+          <OrbitDefShowElement
+            name={propPrefix.toLowerCase() + "Show"}
+            displayName={"Show"}
+            value={propPrefix.toLowerCase() + "Show"}
+            checked={orbitDef[propPrefix.toLowerCase() + "Show"]}
+            onChecked={onChecked}
+          />
+        </div>
+
+      </div>
     </div>
   );
 

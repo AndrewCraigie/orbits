@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import OrbitDefTextInput from './OrbitDefTextInput';
+
 import OrbitDefNumberInput from './OrbitDefNumberInput';
 import OrbitDefIdInput from './OrbitDefIdInput';
 import OrbitDefAppearance from './OrbitDefAppearance';
 import OrbitDefPenAppearance from './OrbitDefPenAppearance';
 import OrbitDefNumberDelete from './OrbitDefNumberDelete';
+import OrbitDefFunctionInput from './OrbitDefFunctionInput';
 
 import SettingsIcon from '../icons/SettingsIcon';
 import PaletteIcon from '../icons/PaletteIcon';
@@ -19,7 +20,7 @@ export class OrbitDefTabber extends React.Component {
     super(props, context);
 
     this.state = {
-      display: display.APPEARANCE
+      display: display.SETTINGS
     };
 
     this.inputChange = this.inputChange.bind(this);
@@ -27,6 +28,7 @@ export class OrbitDefTabber extends React.Component {
     this.deleteOrbitDef = this.deleteOrbitDef.bind(this);
     this.showSettings = this.showSettings.bind(this);
     this.showAppearance = this.showAppearance.bind(this);
+    this.funcChange = this.funcChange.bind(this);
   }
 
   inputChange(e) {
@@ -34,6 +36,14 @@ export class OrbitDefTabber extends React.Component {
       this.props.orbitDef,
       e.target.name,
       e.target.value
+    )
+  }
+
+  funcChange(orbitDef, fName, fValue){
+    this.props.inputChange(
+      orbitDef,
+      fName,
+      fValue
     )
   }
 
@@ -85,8 +95,8 @@ export class OrbitDefTabber extends React.Component {
         <OrbitDefNumberInput name="phase" value={orbitDef.phase} onChange={this.inputChange} hidden={false}/>
         <OrbitDefNumberInput name="a" value={orbitDef.a} onChange={this.inputChange} hidden={false}/>
         <OrbitDefNumberInput name="b" value={orbitDef.b} onChange={this.inputChange} hidden={false}/>
-        <OrbitDefTextInput name="fX" value={orbitDef.fX} onChange={this.inputChange} hidden={false}/>
-        <OrbitDefTextInput name="fY" value={orbitDef.fY} onChange={this.inputChange} hidden={false}/>
+        <OrbitDefFunctionInput name="fX" orbitDef={orbitDef} value={orbitDef.fX} onChange={this.funcChange} hidden={false}/>
+        <OrbitDefFunctionInput name="fY" orbitDef={orbitDef} value={orbitDef.fY} onChange={this.funcChange} hidden={false}/>
         <OrbitDefNumberInput name="endX" value={orbitDef.endX} onChange={this.inputChange} hidden={false} readonly/>
         <OrbitDefNumberInput name="endY" value={orbitDef.endY} onChange={this.inputChange} hidden={false} readonly/>
 
