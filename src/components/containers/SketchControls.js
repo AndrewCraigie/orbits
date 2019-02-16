@@ -110,6 +110,7 @@ export class SketchControls extends React.Component {
           goToStart={this.goToStart}
           goToEnd={this.goToEnd}
           deleteCurve={this.deleteCurve}
+          dispatch={this.props.dispatch}
         />
       </div>
     )
