@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-import OrbitDefsControls from './OrbitDefsControls';
-import SketchControls from './SketchControls';
+import {OrbitDefsControls} from './OrbitDefsControls';
+import {SketchControls} from './SketchControls';
 
 import * as actions from "../../actions/orbitDefsActions";
 import * as appActions from "../../actions/appSettingsActions";
@@ -14,6 +14,17 @@ export class OrbitsPage extends React.Component {
 
   constructor(props, context) {
     super(props, context);
+
+  }
+
+  componentDidMount() {
+
+    // fetch('http://api/api/sketches/4')
+    //   .then(response => {
+    //   return response.json();
+    // }).then(myJson =>{
+    //   console.log(myJson);
+    // });
 
   }
 
@@ -34,6 +45,7 @@ export class OrbitsPage extends React.Component {
             appSettings={this.props.appSettings}
             appActions={this.props.appActions}
             orbitDefs={this.props.orbitDefs}
+            curvePoints={this.props.curvePoints}
             dispatch={this.props.dispatch}
           />
         </div>
@@ -48,13 +60,15 @@ OrbitsPage.propTypes = {
   appActions: PropTypes.object.isRequired,
   appSettings: PropTypes.object.isRequired,
   orbitDefs: PropTypes.array.isRequired,
+  curvePoints: PropTypes.array.isRequired,
   dispatch: PropTypes.func.isRequired
 };
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
   return {
     appSettings: state.appSettings,
     orbitDefs: state.orbitDefs,
+    curvePoints: state.curvePoints
   };
 }
 

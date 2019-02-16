@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
 import SketchCanvas from '../sketch/SketchCanvas';
-import PlayControls from './PlayControls';
+import {PlayControls} from './PlayControls';
 import * as actions from "../../actions/orbitDefsActions";
 import * as appActions from "../../actions/appSettingsActions";
 
@@ -22,6 +22,7 @@ export class SketchControls extends React.Component {
     this.stop = this.stop.bind(this);
     this.goToStart = this.goToStart.bind(this);
     this.goToEnd = this.goToEnd.bind(this);
+    this.deleteCurve = this.deleteCurve.bind(this);
 
     this.incrementTime = this.incrementTime.bind(this);
 
@@ -38,11 +39,21 @@ export class SketchControls extends React.Component {
   }
 
   goToStart(){
-    console.log("Go To Start");
+    this.setState({animating: false});
+    cancelAnimationFrame(this.rAF);
+    this.props.dispatch(appActions.deleteCurve());
+    this.props.dispatch(appActions.timeChange(0));
+
   }
 
   goToEnd(){
-    console.log("Go To End");
+    // TODO implement go to end functionality
+    this.setState({animating: false});
+    cancelAnimationFrame(this.rAF);
+  }
+
+  deleteCurve(){
+    this.props.dispatch(appActions.deleteCurve());
   }
 
   componentDidMount() {
@@ -66,6 +77,14 @@ export class SketchControls extends React.Component {
 
     if(this.state.animating){
 
+      // Check if currentIteration > iterations
+      if(this.props.appSettings.currentIteration >= this.props.appSettings.iterations -1){
+        this.setState({
+          animating: false
+        });
+        cancelAnimationFrame(this.rAF);
+      }
+
       // increment appSettings currentT
       this.incrementTime();
 
@@ -76,11 +95,12 @@ export class SketchControls extends React.Component {
 
   render() {
     return (
-      <div className="sketch-area">
+      <div className="sketch-area col-12">
         <SketchCanvas
           appSettings={this.props.appSettings}
           animating={this.state.animating}
           orbitDefs={this.props.orbitDefs}
+          curvePoints={this.props.curvePoints}
         />
         <PlayControls
           appSettings={this.props.appSettings}
@@ -89,6 +109,7 @@ export class SketchControls extends React.Component {
           stop={this.stop}
           goToStart={this.goToStart}
           goToEnd={this.goToEnd}
+          deleteCurve={this.deleteCurve}
         />
       </div>
     )
@@ -100,13 +121,15 @@ SketchControls.propTypes = {
   appActions: PropTypes.object.isRequired,
   appSettings: PropTypes.object.isRequired,
   orbitDefs: PropTypes.array.isRequired,
+  curvePoints: PropTypes.array.isRequired,
   dispatch: PropTypes.func.isRequired
 };
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
   return {
     appSettings: state.appSettings,
     orbitDefs: state.orbitDefs,
+    curvePoints: state.curvePoints
   };
 }
 

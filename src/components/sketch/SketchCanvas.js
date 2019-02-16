@@ -3,17 +3,20 @@ import PropTypes from 'prop-types';
 import * as colorUtils from '../../utils/color';
 
 
-class SketchCanvas extends React.Component{
+class SketchCanvas extends React.Component {
 
   constructor(props) {
     super(props);
     this.canvasRef = React.createRef();
     this.drawArm = this.drawArm.bind(this);
+    this.drawOrb = this.drawOrb.bind(this);
+    this.drawPen = this.drawPen.bind(this);
+    this.drawCurve = this.drawCurve.bind(this);
   }
 
-  drawArm(ctx, orb){
+  drawArm(ctx, orb) {
 
-    const strokeRGBA = [...colorUtils.hexToRgb(orb.armColor), orb.armOpacity ].join(', ');
+    const strokeRGBA = [...colorUtils.hexToRgb(orb.armColor), orb.armOpacity].join(', ');
 
     ctx.save();
     ctx.beginPath();
@@ -26,9 +29,9 @@ class SketchCanvas extends React.Component{
 
   }
 
-  drawOrb(ctx, orb){
+  drawOrb(ctx, orb) {
 
-    const strokeRGBA = [...colorUtils.hexToRgb(orb.orbitColor), orb.orbitOpacity ].join(', ');
+    const strokeRGBA = [...colorUtils.hexToRgb(orb.orbitColor), orb.orbitOpacity].join(', ');
 
     ctx.save();
     ctx.beginPath();
@@ -40,9 +43,9 @@ class SketchCanvas extends React.Component{
 
   }
 
-  drawPen(ctx, orb){
+  drawPen(ctx, orb) {
 
-    const penRGBA = [...colorUtils.hexToRgb(orb.curveColor), 1.0 ].join(', ');
+    const penRGBA = [...colorUtils.hexToRgb(orb.curveColor), 1.0].join(', ');
 
     ctx.save();
     ctx.beginPath();
@@ -53,7 +56,33 @@ class SketchCanvas extends React.Component{
 
   }
 
-  componentDidUpdate(){
+  drawCurve(ctx, points){
+
+    const curveRGBA = [
+      ...colorUtils.hexToRgb(this.props.appSettings.curveColor),
+      this.props.appSettings.curveOpacity
+    ].join(', ');
+
+    if(points.length > 0){
+
+      ctx.save();
+      ctx.strokeStyle = `rgba(${curveRGBA})`;
+      ctx.lineWidth = this.props.appSettings.curveStrokeWeight;
+
+      for(let i = 1; i < points.length; i++){
+        ctx.beginPath();
+        ctx.moveTo(points[i-1][0], points[i-1][1]);
+        ctx.lineTo(points[i][0], points[i][1]);
+        ctx.stroke();
+      }
+
+      ctx.restore();
+    }
+
+
+  }
+
+  componentDidUpdate() {
     const canvas = this.canvasRef.current;
     const ctx = canvas.getContext('2d');
     const width = canvas.width;
@@ -64,27 +93,43 @@ class SketchCanvas extends React.Component{
     ctx.fillRect(0, 0, width, height);
 
 
+    this.props.orbitDefs.forEach((orb) => {
+
+        if (orb.armShow) {
+          this.drawArm(ctx, orb)
+        }
+        if (orb.orbitShow) {
+          this.drawOrb(ctx, orb)
+        }
+        if (orb.penShow) {
+          this.drawPen(ctx, orb)
+        }
+
+        this.drawCurve(ctx, this.props.curvePoints);
+
+      }
+    );
 
 
-    for(let orb of this.props.orbitDefs){
-
-      if(orb.armShow){this.drawArm(ctx, orb)}
-      if(orb.orbitShow){this.drawOrb(ctx, orb)}
-      if(orb.penShow){this.drawPen(ctx, orb)}
-      // How to optionally show pen and curve?
-
-    }
+    // for(let orb of this.props.orbitDefs){
+    //
+    //   if(orb.armShow){this.drawArm(ctx, orb)}
+    //   if(orb.orbitShow){this.drawOrb(ctx, orb)}
+    //   if(orb.penShow){this.drawPen(ctx, orb)}
+    //   // How to optionally show pen and curve?
+    //
+    // }
 
 
   }
 
   render() {
-    return(
+    return (
       <canvas
         ref={this.canvasRef}
         className={this.props.animating ? 'canvas-animating' : 'canvas-not-animating'}
         width={"800"}
-        height={"800"}
+        height={"700"}
       >
       </canvas>
     )
@@ -98,7 +143,8 @@ class SketchCanvas extends React.Component{
 SketchCanvas.propTypes = {
   appSettings: PropTypes.object.isRequired,
   orbitDefs: PropTypes.array.isRequired,
-  animating: PropTypes.bool.isRequired
+  animating: PropTypes.bool.isRequired,
+  curvePoints: PropTypes.array.isRequired
 };
 
 

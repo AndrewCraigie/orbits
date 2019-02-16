@@ -6,6 +6,14 @@ import OrbitDefShowElement from './OrbitDefShowElement';
 
 const OrbitDefPenAppearance = ({orbitDef, propPrefix, displayName, onChange, onChecked}) => {
 
+  const show = () => {
+    if((orbitDef[propPrefix.toLowerCase() + "Show"] === "true") || (orbitDef[propPrefix.toLowerCase() + "Show"] === true)){
+      return true;
+    } else {
+      return false
+    }
+  };
+
   return (
     <div className="orbit-def-appearance col-12">
 
@@ -23,7 +31,7 @@ const OrbitDefPenAppearance = ({orbitDef, propPrefix, displayName, onChange, onC
           name={propPrefix.toLowerCase() + "Show"}
           displayName={"Show"}
           value={propPrefix.toLowerCase() + "Show"}
-          checked={orbitDef[propPrefix.toLowerCase() + "Show"]}
+          checked={show()}
           onChecked={onChecked}
         />
         </div>

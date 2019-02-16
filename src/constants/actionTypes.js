@@ -15,5 +15,8 @@ export const CY_CHANGE = 'CY_CHANGE';
 
 export const STATE_CHANGE = 'STATE_CHANGE';
 export const ORBIT_DEFS_CHANGE = 'ORBIT_DEFS_CHANGE';
+export const TIME_INCREMENT = 'TIME_INCREMENT';
+
+export const DELETE_CURVE_POINTS = 'DELETE_CURVE_POINTS';
 
 export const TEST_ACTION = 'TEST_ACTION';

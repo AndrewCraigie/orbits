@@ -1,5 +1,5 @@
 /* eslint-disable import/no-named-as-default */
-import { NavLink, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import OrbitsPage from "./containers/OrbitsPage";
 import NotFoundPage from "./NotFoundPage";
@@ -18,13 +18,12 @@ class App extends React.Component {
 
 
   render() {
-    const activeStyle = { color: 'blue' };
     return (
       <div className="container-fluid">
-        <header>
-          <NavLink exact to="/" activeStyle={activeStyle}>Orbits</NavLink>
-          {' | '}
-        </header>
+        {/*<header>*/}
+          {/*<NavLink exact to="/" activeStyle={activeStyle}>Orbits</NavLink>*/}
+          {/*{' | '}*/}
+        {/*</header>*/}
         <Switch>
           <Route exact path="/"  component={OrbitsPage} />
           <Route component={NotFoundPage} />

@@ -5,16 +5,18 @@ import PropTypes from 'prop-types';
 const OrbitFoot = ({appSettings}) => {
 
   return (
-    <div className="orbit-foot">
+    <div className="orbit-foot form-group">
       <div className="orbit-foot-end-controls">
-        <label><span className="orbit-foot-endx-title">End X</span>
+        <label className="form-group row">
+          <span className="col-sm-3 col-form-label label-xs">End X</span>
           <input
             type="text"
             name="endX"
             value={appSettings.endX}
           />
         </label>
-        <label><span className="orbit-foot-endy-title">End Y</span>
+        <label className="form-group row">
+          <span className="col-sm-3 col-form-label label-xs">End Y</span>
           <input
             type="text"
             name="endY"

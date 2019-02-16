@@ -7,7 +7,9 @@ const OrbitDefAddControl = ({ addOrbit }) => {
 
   return (
     <div className="orbit-add-controls">
-      <button className="orbit-add-button" onClick={addOrbit}>Add</button>
+      <button
+        className="btn btn-success playback-btn"
+        onClick={addOrbit}>Add Orbit</button>
     </div>
   );
 

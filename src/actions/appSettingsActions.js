@@ -3,22 +3,33 @@ import AppSettingsApi from '../api/appSettingsApi';
 import {calculateOrbits} from "../models/OrbitsCalculator";
 
 
-export function loadAppSettingsSuccess(appSettings){
+export function loadAppSettingsSuccess(appSettings, orbitDefs){
   return {
     type: types.LOAD_APP_SETTINGS_SUCCESS,
-    appSettings
+    appSettings,
+    orbitDefs
   }
 }
 
 export function loadAppSettings(){
   return function(dispatch){
-    return AppSettingsApi.getAppSettings().then(appSettings => {
-      dispatch(loadAppSettingsSuccess(appSettings));
+
+    return AppSettingsApi.getAppSettings().then(defaultSketch => {
+
+      // Calculate initial state of appSetting and orbitDefs
+      let calculatedState = calculateOrbits(defaultSketch.appSettings, defaultSketch.orbitDefs);
+
+      // Dispatch calculated appSetting and orbitDefs
+      dispatch(loadAppSettingsSuccess(calculatedState.appSettings, calculatedState.orbitDefs));
+
+
     }).catch(error => {
-      console.log(error);
+      //console.log(error);
       // TODO create an action that sets state errors for app
       throw(error);
     });
+
+
   };
 }
 
@@ -30,6 +41,31 @@ export function __stateChange(orbitDefs, appSettings){
   }
 }
 
+export function __incrementTime(orbitDefs, appSettings, curvePoints){
+  return{
+    type: types.TIME_INCREMENT,
+    orbitDefs,
+    appSettings,
+    curvePoints
+  }
+}
+
+export function deleteCurve(){
+  return {
+   type: types.DELETE_CURVE_POINTS,
+  }
+}
+
+export function iterationsChange(value){
+  return function(dispatch, getState){
+    const state = getState();
+
+    let newAppSettings = Object.assign({}, state.appSettings, {iterations: value});
+    let calculatedState = calculateOrbits(newAppSettings, state.orbitDefs);
+
+    dispatch(__stateChange(calculatedState.orbitDefs, calculatedState.appSettings));
+  };
+}
 
 export function incrementTime(){
   return function (dispatch, getState) {
@@ -41,7 +77,13 @@ export function incrementTime(){
     let newAppSettings = Object.assign({}, state.appSettings, {currentT: newT});
     let calculatedState = calculateOrbits(newAppSettings, state.orbitDefs);
 
-    dispatch(__stateChange(calculatedState.oribtDefs, calculatedState.appSettings));
+    // Add calculated endX and endY to curvePoints
+    let newCurvePoints = [
+      ...state.curvePoints,
+      [calculatedState.appSettings.endX, calculatedState.appSettings.endY]
+    ];
+
+    dispatch(__incrementTime(calculatedState.orbitDefs, calculatedState.appSettings, newCurvePoints));
 
   };
 }
@@ -53,10 +95,10 @@ export function timeChange(value){
 
     // TODO validate time input is number
 
-    let newAppSettings = Object.assign({}, state.appSettings, {currentT: value});
+    let newAppSettings = Object.assign({}, state.appSettings, {currentT: value}, {currentIteration: 0});
     let calculatedState = calculateOrbits(newAppSettings, state.orbitDefs);
 
-    dispatch(__stateChange(calculatedState.oribtDefs, calculatedState.appSettings));
+    dispatch(__stateChange(calculatedState.orbitDefs, calculatedState.appSettings));
 
   };
 }
@@ -72,7 +114,7 @@ export function onIntervalChange(value){
     let newAppSettings = Object.assign({}, state.appSettings, {interval: value});
     let calculatedState = calculateOrbits(newAppSettings, state.orbitDefs);
 
-    dispatch(__stateChange(calculatedState.oribtDefs, calculatedState.appSettings));
+    dispatch(__stateChange(calculatedState.orbitDefs, calculatedState.appSettings));
 
   };
 }
@@ -86,10 +128,9 @@ export function cXChange(value){
     let cXValue = parseFloat(value);
 
     let newAppSettings = Object.assign({}, state.appSettings, {cX: cXValue});
-    console.log("cXChange", newAppSettings);
     let calculatedState = calculateOrbits(newAppSettings, state.orbitDefs);
 
-    dispatch(__stateChange(calculatedState.oribtDefs, calculatedState.appSettings));
+    dispatch(__stateChange(calculatedState.orbitDefs, calculatedState.appSettings));
 
   };
 }
@@ -106,8 +147,10 @@ export function cYChange(value){
     let newAppSettings = Object.assign({}, state.appSettings, {cY: cYValue});
     let calculatedState = calculateOrbits(newAppSettings, state.orbitDefs);
 
-    dispatch(__stateChange(calculatedState.oribtDefs, calculatedState.appSettings));
+    dispatch(__stateChange(calculatedState.orbitDefs, calculatedState.appSettings));
 
   };
 }
+
+
 

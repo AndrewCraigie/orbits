@@ -1,0 +1,8 @@
+numerator	4
+demoninator	PI * ((2 * n) + 1)
+
+radius = 4 / PI * ((2 * n) + 1)
+
+
+x = (4 / PI * ((2 * n) + 1)) * cos((((2 * n) + 1)  * t) + phase)
+y =  (4 / PI * ((2 * n) + 1)) * sin((((2 * n) + 1)  * t) + phase)

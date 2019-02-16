@@ -31,7 +31,7 @@ export function orbitDefInputChange(
 
     let calculatedState = calculateOrbits(state.appSettings, newOrbitDefs);
 
-    dispatch(__orbitDefsChange(calculatedState.oribtDefs, calculatedState.appSettings));
+    dispatch(__orbitDefsChange(calculatedState.orbitDefs, calculatedState.appSettings));
 
   };
 }
@@ -41,6 +41,8 @@ export function deleteOrbitDef(orbitDefToDelete){
 
     const state = getState();
 
+    // TODO decide if n values should be re-calculated to reflect deletion?
+
     let newOrbitDefs = state.orbitDefs.filter(orbitDef => {
       if (orbitDef.orbitDefId !== orbitDefToDelete.orbitDefId) {
         return Object.assign({}, orbitDef);
@@ -49,7 +51,7 @@ export function deleteOrbitDef(orbitDefToDelete){
 
     let calculatedState = calculateOrbits(state.appSettings, newOrbitDefs);
 
-    dispatch(__orbitDefsChange(calculatedState.oribtDefs, calculatedState.appSettings));
+    dispatch(__orbitDefsChange(calculatedState.orbitDefs, calculatedState.appSettings));
 
   }
 }
@@ -59,8 +61,13 @@ export function addOrbitDef(){
 
     const state = getState();
 
-    let newOrbitDef = Object.assign({}, state.appSettings.defaultOrbitDef);
+    let newOrbitDef = Object.assign({}, state.orbitDefs[state.orbitDefs.length - 1]);
+
+    // Add a unique id
     newOrbitDef.orbitDefId = OrbitsApi.generateId();
+
+    // Add a 'sensible' n value
+    newOrbitDef.n = state.orbitDefs.length + 1;
 
     let newOrbitDefs = [
      ...state.orbitDefs,
@@ -69,7 +76,7 @@ export function addOrbitDef(){
 
     let calculatedState = calculateOrbits(state.appSettings, newOrbitDefs);
 
-    dispatch(__orbitDefsChange(calculatedState.oribtDefs, calculatedState.appSettings));
+    dispatch(__orbitDefsChange(calculatedState.orbitDefs, calculatedState.appSettings));
   }
 }
 
@@ -82,6 +89,7 @@ export function loadOrbitDefsSuccess(orbitDefs, appSettings){
   }
 }
 
+
 export function loadOrbitDefs(){
   return function (dispatch, getState){
     return OrbitsApi.getAllOrbitDefs().then(orbitDefs => {
@@ -90,10 +98,10 @@ export function loadOrbitDefs(){
 
       let calculatedState = calculateOrbits(state.appSettings, orbitDefs);
 
-      dispatch(loadOrbitDefsSuccess(calculatedState.oribtDefs, calculatedState.appSettings));
+      dispatch(loadOrbitDefsSuccess(calculatedState.orbitDefs, calculatedState.appSettings));
 
     }).catch(error => {
-      console.log(error);
+      //console.log(error);
       // TODO create an action that sets state errors for app
       throw(error);
     });

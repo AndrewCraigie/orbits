@@ -18,16 +18,14 @@ export class OrbitDefsControls extends React.Component{
     this.addOrbit = this.addOrbit.bind(this);
     this.deleteOrbit = this.deleteOrbit.bind(this);
     this.inputChange = this.inputChange.bind(this);
-    this.onTimeChange = this.onTimeChange.bind(this);
-    this.onIntervalChange = this.onIntervalChange.bind(this);
+
     this.onCXChange = this.onCXChange.bind(this);
     this.onCYChange = this.onCYChange.bind(this);
+
 
   }
 
   addOrbit(){
-    // Using this because it seems to work
-    // with 'thunk' ???
     this.props.dispatch(actions.addOrbitDef());
   }
 
@@ -45,17 +43,7 @@ export class OrbitDefsControls extends React.Component{
     ))
   }
 
-  onTimeChange(e){
-    this.props.dispatch(appActions.timeChange(
-      e.target.value
-    ));
-  }
 
-  onIntervalChange(e) {
-    this.props.dispatch(appActions.onIntervalChange(
-      e.target.value
-    ));
-  }
 
 
   onCXChange(e){
@@ -76,22 +64,27 @@ export class OrbitDefsControls extends React.Component{
       <div className={'col orbits-page-left'}>
           <div className="orbits-controls">
             <div className="orbits-head-wrapper">
+
             <OrbitHead
-              onTimeChange={this.onTimeChange}
-              onIntervalChange={this.onIntervalChange}
               onCXChange={this.onCXChange}
               onCYChange={this.onCYChange}
               appSettings={this.props.appSettings}
             />
             </div>
+
             <OrbitDefsList
               inputChange={this.inputChange}
               deleteOrbit={this.deleteOrbit}
               actions={this.props.actions}
               appSettings={this.props.appSettings}
-              orbitDefs={this.props.orbitDefs}/>
+              orbitDefs={this.props.orbitDefs}
+            />
+
+            <div className="orbits-foot-wrapper">
             <OrbitFoot appSettings={this.props.appSettings}/>
             <OrbitDefAddControl addOrbit={this.addOrbit} />
+            </div>
+
           </div>
       </div>
     )
@@ -108,7 +101,7 @@ OrbitDefsControls.propTypes = {
   dispatch: PropTypes.func.isRequired
 };
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
   return {
     appSettings: state.appSettings,
     orbitDefs: state.orbitDefs,

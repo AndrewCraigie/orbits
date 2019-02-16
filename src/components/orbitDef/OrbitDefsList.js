@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import OrbitDefTabber from './OrbitDefTabber';
+import {OrbitDefTabber} from './OrbitDefTabber';
 
 
-const OrbitDefsList = ({ inputChange, deleteOrbit, actions, appSettings, orbitDefs }) => {
+const OrbitDefsList = ({ inputChange, deleteOrbit, actions, orbitDefs }) => {
 
   let orbitDefsElements = orbitDefs.map((orbDef, index) => {
     return (

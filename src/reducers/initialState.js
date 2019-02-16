@@ -1,11 +1,17 @@
 export default {
   orbitDefs:[],
   appSettings: {
+    title: "Default Sketch",
+    description: "Simple series",
+    public: true,
+    featuredSeries: true,
+    user_id: 1,
     plotXOffset: 400,
     plotYOffset: 300,
     currentT: 4000,
     interval: 0.04,
     iterations: 20000,
+    currentIteration: 0,
     plotScale: 1,
     defaultId1: "oneid",
     defaultId2: "twoid",
@@ -48,5 +54,6 @@ export default {
       penSize: 10,
       penShow: true
     }
-  }
+  },
+  curvePoints: []
 }

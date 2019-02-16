@@ -4,12 +4,13 @@ import PropTypes from 'prop-types';
 import GoStartIcon from '../icons/GoStartIcon';
 import PlayIcon from '../icons/PlayIcon';
 import StopIcon from '../icons/StopIcon';
-import GoEndIcon from '../icons/GoEndIcon';
+//import GoEndIcon from '../icons/GoEndIcon';
+import DeleteIcon from '../icons/DeleteIcon';
 
-const PlayButtonGroup = ({appSettings, play, stop, goToStart, goToEnd}) => {
+const PlayButtonGroup = ({ play, stop, goToStart, deleteCurve}) => {
 
   return (
-    <div className="play-button-group">
+    <div className="play-button-group col-8">
       <button
         className="btn btn-primary playback-btn"
         onClick={goToStart}
@@ -25,10 +26,15 @@ const PlayButtonGroup = ({appSettings, play, stop, goToStart, goToEnd}) => {
         onClick={stop}
       ><StopIcon/> Stop
       </button>
+      {/*<button*/}
+        {/*className="btn btn-primary playback-btn"*/}
+        {/*onClick={goToEnd}*/}
+      {/*><GoEndIcon/> End*/}
+      {/*</button>*/}
       <button
-        className="btn btn-primary playback-btn"
-        onClick={goToEnd}
-      ><GoEndIcon/> End
+        className="btn btn-danger playback-btn"
+        onClick={deleteCurve}
+      ><DeleteIcon/> Delete
       </button>
     </div>
   )
@@ -40,7 +46,8 @@ PlayButtonGroup.propTypes = {
   play: PropTypes.func.isRequired,
   stop: PropTypes.func.isRequired,
   goToStart: PropTypes.func.isRequired,
-  goToEnd: PropTypes.func.isRequired
+  goToEnd: PropTypes.func.isRequired,
+  deleteCurve: PropTypes.func.isRequired
 };
 
 export default PlayButtonGroup;

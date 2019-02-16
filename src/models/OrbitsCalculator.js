@@ -16,6 +16,9 @@ export function calculateOrbits(appSettings, orbitDefs){
   let currentT = parseFloat(appSettings.currentT);
   let interval = parseFloat(appSettings.interval);
 
+
+  let currentIteration = parseInt(appSettings.currentIteration) + 1;
+
   let t = currentT * interval;
 
   // Iterate over all obrbitDefs
@@ -77,8 +80,8 @@ export function calculateOrbits(appSettings, orbitDefs){
 
   }
 
-  let calculatedAppSettings = Object.assign({}, appSettings, {endX: endX}, {endY: endY});
+  let calculatedAppSettings = Object.assign({}, appSettings, {endX: endX}, {endY: endY}, {currentIteration:currentIteration});
 
-  return {oribtDefs: calculatedOrbitDefs, appSettings: calculatedAppSettings};
+  return {orbitDefs: calculatedOrbitDefs, appSettings: calculatedAppSettings};
 
 }

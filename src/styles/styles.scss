@@ -11,7 +11,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
   font-smoothing: antialiased;
-  background-color: #e7ecea;
+  background-color: white;
 }
 
 td {
@@ -24,7 +24,7 @@ h2 {
 
 #app{
   margin: 0;
-  background-color: #e7ecea;
+  background-color: white;
 
 }
 
@@ -36,102 +36,6 @@ header{
 }
 
 
-
-//.page-content{
-//  display: flex;
-//}
-
-//.orbits-controls{
-//  width: 400px;
-//}
-
-//.orbit-head {
-//  width: 400px;
-//  padding: 5px 0 10px 5px;
-//  border: 1px solid darkgray;
-//  background-color: lightgreen;
-//}
-
-//.orbit-head-t-title{
-//  display: inline-block;
-//  width: $label-width;
-//}
-//
-//.orbit-head-interval-title{
-//  display: inline-block;
-//  width: $label-width;
-//}
-//
-//.orbit-head-c-title{
-//  display: inline-block;
-//  width: $label-width;
-//}
-
-
-//.orbits-defs-list{
-//  width: 400px;
-//  margin-bottom: 5px;
-//}
-//
-//.orbit-def-form{
-//  width: 400px;
-//  padding: 5px 0 10px 5px;
-//  border: 1px solid darkgray;
-//  background-color: white;
-//}
-
-//.orbit-def-form input[type=submit]{
-//  display:block;
-//  margin-bottom: 7px;
-//}
-
-//.orbit-def-input-label {
-//  display:block;
-//  height: 23px;
-//}
-//
-//.orbit-def-label-title {
-//  display: inline-block;
-//  width: $label-width;
-//}
-
-//.orbit-add-controls {
-//  position: relative;
-//  width: 404px;
-//  height: 25px;
-//}
-//
-//.orbit-add-button {
-//  float: right;
-//}
-//
-//.orbit-def-id {
-//  font-size: 12px;
-//  display: inline-block;
-//  margin: 0;
-//  padding: 0 4px 0 0;
-//  float: right;
-//}
-//
-//.orbit-foot {
-//  width: 400px;
-//  padding: 5px 0 10px 5px;
-//  border: 1px solid darkgray;
-//  background-color: lightgreen;
-//}
-
-//.orbit-foot-endx-title, .orbit-foot-endy-title{
-//  display: inline-block;
-//  width: $label-width;
-//}
-
-//.sketch-area{
-//  width: 900px;
-//  height: 800px;
-//  margin-left: 20px;
-//  background-color: lightblue;
-//}
-
 .orbits-head-wrapper{
   margin-left: -10px;
   margin-right: -10px;
@@ -141,16 +45,40 @@ header{
   border-radius: 4px;
 }
 
+.orbits-foot-wrapper{
+  margin-left: -10px;
+  margin-right: -10px;
+  margin-bottom: 4px;
+  padding-right: 5px;
+  padding-top: 5px;
+  padding-left: 20px;
+  border: 1px solid darkgray;
+  border-radius: 4px;
+}
+
 .orbit-head{
   padding-top: 5px;
 
 }
 
+.orbit-add-controls{
+
+  padding-left:90px;
+  margin-bottom: 10px;
+}
+
+.orbits-page{
+  padding-top: 10px;
+}
+
 .orbits-defs-list{
   margin-left: -10px;
   margin-right: -10px;
-  padding-right: 5px;
-
+  padding-right: 10px;
+  height: 572px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin-bottom: 5px;
 }
 
 .input-xs {
@@ -161,11 +89,35 @@ header{
   border-radius: 3px;
 }
 
+.input-xs-time {
+  height: 22px;
+  padding: 2px 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+
 .label-xs{
   height: 22px;
   padding: 2px 5px 2px 20px;
   font-size:12px;
   line-height: 1.5;
+
+}
+
+.label-xs-time{
+  height: 22px;
+  padding: 2px 5px 2px 0px;
+  font-size:12px;
+  line-height: 1.5;
+
+}
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+  padding-right: 0;
+  padding-left: 0;
 }
 
 .label-app-xs{
@@ -205,7 +157,7 @@ label.form-group.row{
 }
 
 .tabber-settings, .tabber-appearance{
-  width: 18px;
+  width: 19px;
   height: 40px;
   border-left: 1px solid darkgray;
   border-top: 1px solid darkgray;
@@ -254,7 +206,7 @@ label.form-group.row{
   border:1px solid darkgray;
   border-radius: 0 5px 5px 0;
   background-color: white;
-  margin-right: -8px;
+  margin-right: -5px;
   padding-right: 5px;
   padding-top: 4px;
 }
@@ -315,9 +267,21 @@ label.form-group.row{
 /* Playback Controls */
 .play-controls{
   width: 800px;
-  height: 200px;
+  margin-left: 0px;
   border: 1px solid darkgray;
   background-color: gainsboro;
+  border-radius: 5px;
+  padding-bottom: 10px;
+}
+
+.play-button-group{
+  margin-top: 5px;
+  margin-left:auto;
+  margin-right: auto;
+}
+
+.play-time-controls{
+  margin-left: -10px;
 }
 
 .playback-btn{
@@ -347,6 +311,19 @@ label.form-group.row{
 }
 .go-end-icon{
   fill:white;
+}
+
+.delete-icon-svg{
+  margin-right: 3px;
+}
+
+.delete-icon{
+  fill:white;
+}
+
+.current-iteration{
+  color: #1b1e21 !important;
+  background-color: #c6cbc9;
 }
 
 // function input focus glow

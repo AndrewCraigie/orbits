@@ -6,7 +6,7 @@ import OrbitDefIdInput from './OrbitDefIdInput';
 import OrbitDefAppearance from './OrbitDefAppearance';
 import OrbitDefPenAppearance from './OrbitDefPenAppearance';
 import OrbitDefNumberDelete from './OrbitDefNumberDelete';
-import OrbitDefFunctionInput from './OrbitDefFunctionInput';
+import {OrbitDefFunctionInput} from './OrbitDefFunctionInput';
 
 import SettingsIcon from '../icons/SettingsIcon';
 import PaletteIcon from '../icons/PaletteIcon';
